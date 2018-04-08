@@ -1,83 +1,75 @@
 package Structure;
 
-public class SimpleList<T> {
+public class CircularSimpleList<T> {
 	
-	private  SimpleNode<T> start;
+	private SimpleNode<T> start;
+	private SimpleNode<T> last;
 	private int lenght;
 	
-	
-	public SimpleList(){
+	public void  CircularSimleList() {
 		start = null;
-		lenght = -1;
-		
+		last = null;
+		lenght = 0;
 	}
 	
-	public boolean isEmty() {
+	public boolean isEmpty() {
 		return start == null;
+		
 	}
 	
 	public int getLenght() {
 		return lenght;
 		
 	}
-		
-	public void setLenght() {
-		this.lenght = -1;
 	
-	}
-	
-	public void setAtFinal(T data) {
+	public void addAtFinal(T data) {
 		SimpleNode<T> node = new SimpleNode<T>();
-		
 		node.setData(data);
 		
-		if (isEmty()) {
+		if (isEmpty()) {
 			start = node;
-			lenght++;
+			last = node;
 			
+			last.setNext(start);
+			
+			lenght++;
 			
 		}else {
-			SimpleNode<T> aux = start;
+			last.setNext(node);
+			node.setNext(start);
+			last = node;
 			
-			while(aux.getNext() != null) {
-				aux = aux.getNext();
-			}
-			
-			aux.setNext(node);
 			lenght++;
-			
 		}
-		
 		
 		
 	}
-	
-	public T getData (int position) throws Exception {
-		
-		
-		if (position >= 0 && position <= lenght && start.getData() != null) {
-			
+
+	public T getData(int position) throws Exception {
+
+		if (position >= 0 && position < lenght) {
+
 			if (position == 0) {
 				return start.getData();
-				
-			}else {
-				
+
+			} else {
 				SimpleNode<T> aux = start;
+
 				for (int i = 0; i < position; i++) {
 					aux = aux.getNext();
+
 				}
-				
 				return aux.getData();
 			}
-		}else {
+
+		} else {
 			throw new Exception("Invalid");
 		}
-		
 	}
 	
 	public void delete() {
-		
 		start = null;
+		last = null;
 		lenght = 0;
 		
 	}

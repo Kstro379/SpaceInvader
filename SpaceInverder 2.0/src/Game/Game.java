@@ -60,7 +60,7 @@ public class Game extends Canvas implements Runnable {
 		if (gameState == STATE.Game) {
 			
 			handler.addSimpleList(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
-			handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+			
 			
 		}else {
 			for (int i = 0; i < 10; i++) {

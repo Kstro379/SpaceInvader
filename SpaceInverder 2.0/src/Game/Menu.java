@@ -57,7 +57,7 @@ public class Menu extends MouseAdapter {
 				Game.gameState = STATE.Game;
 				hud.setLevel(1);
 				hud.setScore(0);
-				handler.object1.setAtFinal(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
+				handler.player.setAtFinal(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
 				handler.clearEnemys();
 				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
 				AudioPlayer.getSound("button_sound").play();
@@ -71,7 +71,6 @@ public class Menu extends MouseAdapter {
 				Game.gameState = STATE.Game;
 				handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
 				handler.clearEnemys();
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
 				AudioPlayer.getSound("button_sound").play();
 			
 			}else if (mouseOver(mx, my, 210, 150, 200, 64)) {

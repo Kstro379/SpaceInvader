@@ -25,10 +25,10 @@ public class KeyInput extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < handler.object1.getLenght(); i++) {
+		for (int i = 0; i < handler.player.getLenght(); i++) {
 			GameObject tempObject;
 			try {
-				tempObject = handler.object1.getData(i);
+				tempObject = handler.player.getData(i);
 				if (tempObject.getId() == ID.Player) {
 					
 					if (key == KeyEvent.VK_A) {

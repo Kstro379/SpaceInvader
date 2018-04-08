@@ -33,10 +33,12 @@ public class Player extends GameObject {
 	
 
 	public void tick() {
+		
 		x += velX;
 		
-		x = Game.clamp(x, 0, Game.WIDTH - 52);
+		x = Game.clamp(x, 0, Game.WIDTH - 68);
 		y = 400;
+		
 		collision();
 		
 		

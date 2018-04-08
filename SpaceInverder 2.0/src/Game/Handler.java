@@ -11,7 +11,8 @@ public class Handler {
 	//Recuerde crear las listas y luego solo agrega metodos pa
 	//Recorrrelars con varios for  
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
-	SimpleList<GameObject> object1 = new SimpleList<GameObject>();
+	SimpleList<GameObject> player = new SimpleList<GameObject>();
+	SimpleList<GameObject> basic = new SimpleList<GameObject>();
 	Game game;
 	
 	public void tick() {
@@ -21,11 +22,11 @@ public class Handler {
 			tempObject.tick();
 		}
 		
-		for (int i = 0; i < object1.getLenght(); i++) {
+		for (int i = 0; i < player.getLenght(); i++) {
 
 			try {
-				GameObject tempObject = (GameObject) object1.getData(i);
-				System.out.println(tempObject);
+				GameObject tempObject = (GameObject) player.getData(i);
+				System.out.println(basic.getLenght());
 				if (tempObject != null) {
 					tempObject.tick();
 
@@ -36,6 +37,22 @@ public class Handler {
 			}
 
 		}
+		
+		for (int i = 0; i < basic.getLenght(); i++) {
+
+			try {
+				
+				GameObject tempObject = (GameObject) basic.getData(i);
+				
+				if (tempObject != null) {
+					tempObject.tick();
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 	public void render(Graphics g) {
@@ -45,16 +62,28 @@ public class Handler {
 			
 			tempObject.render(g);
 		}
-		for (int i = 0; i < object1.getLenght(); ++i) {
+		for (int i = 0; i < player.getLenght(); ++i) {
 			try {
-				GameObject tempObject = (GameObject) object1.getData(i);
-				System.out.println(tempObject);
+				GameObject tempObject = (GameObject) player.getData(i);
+				
 				if (tempObject != null) {
 					tempObject.render(g);
 				
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
+				e.printStackTrace();
+			}
+		}
+		for (int i = 0; i < basic.getLenght(); ++i) {
+			try {
+				GameObject tempObject = (GameObject) basic.getData(i);
+				
+				if (tempObject != null) {
+					tempObject.render(g);
+				
+				}
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -64,7 +93,8 @@ public class Handler {
 		for (int i = 0; i < object.size(); i++) {
 	
 				object.clear();
-				object1.delete();
+				player.delete();
+				basic.delete();
 				
 				
 				
@@ -83,7 +113,11 @@ public class Handler {
 	}
 	
 	public void addSimpleList(GameObject object) {
-		this.object1.setAtFinal(object);
+		this.player.setAtFinal(object);
+	}
+	
+	public void addSimpleListBasic(GameObject object) {
+		this.basic.setAtFinal(object);
 	}
 	
 	public void removeObject(GameObject object) {

@@ -1,18 +1,25 @@
 package Game;
 
-import java.util.Random;
+
 
 public class Spawn {
 	
 	private Handler handler;
 	private HUD hud;
-	private Random r = new Random();
 	
+	
+	private int positionY;
 	private int scoreKeep = 0;
+	private int positionX;
+	private int cont = 0;
+	
 	
 	public Spawn(Handler handler, HUD hud) {
 		this.handler  = handler;
 		this.hud = hud;
+		positionX = 100;
+		positionY = 100;
+		
 		
 	}
 	
@@ -27,25 +34,37 @@ public class Spawn {
 		
 		if (scoreKeep >= 100) {
 			scoreKeep = 0;
+			cont = 0;
 			hud.setLevel(hud.getLevel() + 1);
 			
-			if (hud.getLevel() == 2) {
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+			
+		
+			}else if (hud.getLevel() == 2 ) {
+				
+				if (cont <= 0) {
+				
+					for (int i = 0; i < 5; i++) {
+						handler.addSimpleListBasic(new BasicEnemy(positionX, positionY, ID.BasicEnemy, handler));
+						positionX += 50;
+					}
+					
+				}
+				cont++;
+				
 				
 			}else if (hud.getLevel() == 3) {
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+				
 			
 			}else if (hud.getLevel() == 4) {
-			handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.FastEnemy, handler));
+			
 
 			}else if (hud.getLevel() == 5) {
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.SmartEnemy, handler));
+				
 				
 			}else if (hud.getLevel() == 6) {
-				handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.FastEnemy, handler));
+				
 				
 			}else if (hud.getLevel() == 7) {
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.SmartEnemy, handler));
 				
 			}else if (hud.getLevel() == 10) {
 				handler.clearEnemys();
@@ -55,5 +74,6 @@ public class Spawn {
 	}
 		
 
-	}
+
+	
 }
