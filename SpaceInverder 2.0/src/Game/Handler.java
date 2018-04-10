@@ -13,6 +13,7 @@ public class Handler {
 	SimpleList<GameObject> player = new SimpleList<GameObject>();
 	SimpleList<GameObject> basic = new SimpleList<GameObject>();
 	DoubleList<GameObject> enemyChange = new DoubleList<GameObject>();
+	private int cont;
 	
 	Game game;
 	
@@ -36,7 +37,7 @@ public class Handler {
 		
 		if (basic.getLenght() > 0) {
 			for (int i = 0; i < basic.getLenght(); i++) {
-				System.out.println(basic.getLenght());
+				
 
 				GameObject tempObject  =  basic.getData(i);
 				tempObject.tick();
@@ -52,11 +53,19 @@ public class Handler {
 			for (int i = 0; i < enemyChange.getLenght(); i++) {
 
 				GameObject tempObject;
+				
+				
 
+				
 				tempObject = (GameObject) enemyChange.getData(i);
-				enemyChange.Change(i);
 				if (tempObject != null) {
 					tempObject.tick();
+					if (cont > 200) {
+						enemyChange.Change();
+					}
+					cont++;
+					
+					
 
 				}
 
@@ -101,20 +110,23 @@ public class Handler {
 		if (enemyChange.getLenght() > 0) {
 			for (int i = 0; i < enemyChange.getLenght(); i++) {
 
-				
 				GameObject tempObject;
-				
-					tempObject = (GameObject) enemyChange.getData(i);
-					enemyChange.Change(i);
-					if (tempObject != null) {
-						tempObject.render(g);
 
-					
-				} 
 				
+
+				tempObject = (GameObject) enemyChange.getData(i);
+				if (tempObject != null) {
+					tempObject.render(g);
+					if (cont > 200) {
+						enemyChange.Change();
+						cont = 0;
+					}
+					
+
+				}
+
 			}
 		}
-
 	
 	}
 	
@@ -150,7 +162,7 @@ public class Handler {
 	}
 	
 	public void addDoubleList(GameObject object) {
-		this.enemyChange.insertAtFinal(object);
+		this.enemyChange.setAtFinal(object);
 	}
 	
 

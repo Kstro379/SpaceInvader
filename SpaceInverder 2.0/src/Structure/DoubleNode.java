@@ -11,7 +11,7 @@ public class DoubleNode<T> {
 		this.next = null;
 		this.back = null;
 	}
-
+	
 	public T getData() {
 		return data;
 	}
@@ -36,4 +36,6 @@ public class DoubleNode<T> {
 		this.back = back;
 	}
 
-}
+
+
+}	

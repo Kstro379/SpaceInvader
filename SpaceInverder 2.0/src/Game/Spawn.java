@@ -63,14 +63,14 @@ public class Spawn {
 				
 				positionX = 100;
 				
-				for (int i = 1; i <= 5; i++) {
+				for (int i = 1; i < 5; i++) {
 
 					value = r.nextInt(3);
 					
 					if (value == 2 && check == 0) {
 						
 						positionX += 15;
-						handler.addSimpleListBasic(new BasicEnemyBoss(positionX, 20, ID.BasicEnemyBoss, handler));
+						handler.addSimpleListBasic(new BasicEnemyBoss(positionX, 40, ID.BasicEnemyBoss, handler));
 						positionX += 50;
 						check++;
 						
@@ -78,39 +78,63 @@ public class Spawn {
 					}else {
 						
 						positionX += 15;
-						handler.addSimpleListBasic(new BasicEnemy(positionX, 20, ID.BasicEnemy, handler));
+						handler.addSimpleListBasic(new BasicEnemy(positionX, 40, ID.BasicEnemy, handler));
 						positionX += 50;
 							
 					}
 					
 				}
+				if (check == 0) {
+					positionX += 15;
+					handler.addSimpleListBasic(new BasicEnemyBoss(positionX, 40, ID.BasicEnemyBoss, handler));
+					positionX += 50;
+					
+				}else {
+					positionX += 15;
+					handler.addDoubleList(new BasicEnemy(positionX, 40, ID.BasicEnemy, handler));
+					positionX += 50;
+				}
 				cont++;
 					
 				
 			
-//			}else if (hud.getLevel() == 4 && cont == 0) {
-//				
-//				for (int i = 0; i <= 5; i++) {
-//
-//					value = r.nextInt(3);
-//					
-//					if (value == 2 && check == 0) {
-//						
-//						handler.addDoubleList(new BasicEnemyBoss(positionX, 40, ID.BasicEnemyBoss, handler));
-//						positionX += 50;
-//						check++;
-//						
-//					
-//					}else {
-//						
-//						handler.addDoubleList(new BasicEnemy(positionX, 40, ID.BasicEnemy, handler));
-//						positionX += 50;
-//							
-//					}
-//					//Comprobar que se agrego!!!
-//					
-//				}
-//				cont++;
+			}else if (hud.getLevel() == 4 && cont == 0) {
+				
+				positionX = 100;
+				
+				for (int i = 1; i < 5; i++) {
+
+					value = r.nextInt(3);
+					
+					if (value == 2 && check == 0) {
+						
+						positionX += 15;
+						handler.addDoubleList(new BasicEnemyBoss(positionX, 20, ID.BasicEnemyBoss, handler));
+						positionX += 50;
+						check++;
+						
+					
+					}else {
+						
+						positionX += 15;
+						handler.addDoubleList(new BasicEnemy(positionX, 20, ID.BasicEnemy, handler));
+						positionX += 50;
+							
+					}
+					//Comprobar que se agrego!!!
+					
+				}
+				if (check == 0) {
+					positionX += 15;
+					handler.addDoubleList(new BasicEnemyBoss(positionX, 20, ID.BasicEnemyBoss, handler));
+					positionX += 50;
+				}
+				else {
+					positionX += 15;
+					handler.addDoubleList(new BasicEnemy(positionX, 20, ID.BasicEnemy, handler));
+					positionX += 50;
+				}
+				cont++;
 			
 				
 			
