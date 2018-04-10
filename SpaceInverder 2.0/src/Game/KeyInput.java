@@ -41,6 +41,9 @@ public class KeyInput extends KeyAdapter {
 						tempObject.setVelX(5);
 						keyDown[1] = true;
 					}
+					if (key == KeyEvent.VK_ESCAPE) {
+						
+					}
 				}
 			} catch (Exception e1) {
 				
@@ -59,7 +62,7 @@ public class KeyInput extends KeyAdapter {
 			}
 			
 		}
-		if (key == KeyEvent.VK_ESCAPE) System.exit(1);
+		if (key == KeyEvent.VK_E) System.exit(1);
 		
 	}
 	
