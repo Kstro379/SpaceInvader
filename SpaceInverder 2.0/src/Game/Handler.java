@@ -1,8 +1,8 @@
 package Game;
 
 import java.awt.Graphics;
-import java.util.LinkedList;
 
+import Structure.DoubleList;
 import Structure.SimpleList;
 
 public class Handler {
@@ -10,107 +10,136 @@ public class Handler {
 	
 	//Recuerde crear las listas y luego solo agrega metodos pa
 	//Recorrrelars con varios for  
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
 	SimpleList<GameObject> player = new SimpleList<GameObject>();
 	SimpleList<GameObject> basic = new SimpleList<GameObject>();
+	DoubleList<GameObject> enemyChange = new DoubleList<GameObject>();
+	
 	Game game;
 	
 	public void tick() {
-		for (int i = 0 ; i < object.size(); i++) {
-			GameObject tempObject = object.get(i);
-			
-			tempObject.tick();
+
+		if (player.getLenght() > 0) {
+
+			for (int i = 0; i < player.getLenght(); i++) {
+				
+
+				GameObject tempObject;
+
+				tempObject = (GameObject) player.getData(i);
+				if (tempObject != null) {
+					tempObject.tick();
+				}
+
+			}
+
 		}
 		
-		for (int i = 0; i < player.getLenght(); i++) {
-
-			try {
-				GameObject tempObject = (GameObject) player.getData(i);
+		if (basic.getLenght() > 0) {
+			for (int i = 0; i < basic.getLenght(); i++) {
 				System.out.println(basic.getLenght());
-				if (tempObject != null) {
-					tempObject.tick();
 
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				GameObject tempObject  =  basic.getData(i);
+				tempObject.tick();
+
+				
 
 			}
 
 		}
 		
-		for (int i = 0; i < basic.getLenght(); i++) {
+		if (enemyChange.getLenght() > 0) {
 
-			try {
-				
-				GameObject tempObject = (GameObject) basic.getData(i);
-				
+			for (int i = 0; i < enemyChange.getLenght(); i++) {
+
+				GameObject tempObject;
+
+				tempObject = (GameObject) enemyChange.getData(i);
+				enemyChange.Change(i);
 				if (tempObject != null) {
 					tempObject.tick();
 
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+
 			}
-			
+
 		}
+
+		
 	}
 
 	public void render(Graphics g) {
-		for (int i = 0; i < object.size(); i++) {
+		
+		if (player.getLenght() > 0) {
 			
-			GameObject tempObject = object.get(i);
+			for (int i = 0; i < player.getLenght(); ++i) {
+				
+				GameObject tempObject;
+
+					tempObject = (GameObject) player.getData(i);
+					if (tempObject != null) {
+						tempObject.render(g);
+					
+					}
 			
-			tempObject.render(g);
-		}
-		for (int i = 0; i < player.getLenght(); ++i) {
-			try {
-				GameObject tempObject = (GameObject) player.getData(i);
-				
-				if (tempObject != null) {
-					tempObject.render(g);
-				
-				}
-			} catch (Exception e) {
-				
-				e.printStackTrace();
 			}
 		}
-		for (int i = 0; i < basic.getLenght(); ++i) {
-			try {
-				GameObject tempObject = (GameObject) basic.getData(i);
+		
+		if (basic.getLenght() > 0) {
+			for (int i = 0; i < basic.getLenght(); ++i) {
 				
-				if (tempObject != null) {
-					tempObject.render(g);
+				GameObject tempObject;
 				
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+					tempObject = (GameObject) basic.getData(i);
+					if (tempObject != null) {
+						tempObject.render(g);
+					
+					}
+			
+			}
+			
+		}
+		if (enemyChange.getLenght() > 0) {
+			for (int i = 0; i < enemyChange.getLenght(); i++) {
+
+				
+				GameObject tempObject;
+				
+					tempObject = (GameObject) enemyChange.getData(i);
+					enemyChange.Change(i);
+					if (tempObject != null) {
+						tempObject.render(g);
+
+					
+				} 
+				
 			}
 		}
+
+	
 	}
 	
 	public void clearEnemys() {
-		for (int i = 0; i < object.size(); i++) {
+		
 	
-				object.clear();
-				player.delete();
-				basic.delete();
-				
-				
-				
-				
-				if (Game.gameState != Game.STATE.End) {
-					addSimpleList(new Player(Game.WIDTH/2-32, Game.HEIGHT/-100, ID.Player,this));
-				}
-				
+			basic.delete();
+			player.delete();
+			enemyChange.delete();
+			
+			if (Game.gameState != Game.STATE.End) {
+				//Lo quite por que en el metodo de limpiar los agrega de nuevo en el menu select
+				//addSimpleList(new Player(Game.WIDTH/2-32, Game.HEIGHT/-100, ID.Player,this));
 			}
+		}
 		
 		
-	}
+		
+		
 	
-	public void addObject(GameObject object) {
-		this.object.add(object);
-	}
+		
+		
+	
+	
+
 	
 	public void addSimpleList(GameObject object) {
 		this.player.setAtFinal(object);
@@ -120,9 +149,11 @@ public class Handler {
 		this.basic.setAtFinal(object);
 	}
 	
-	public void removeObject(GameObject object) {
-		this.object.remove(object);
+	public void addDoubleList(GameObject object) {
+		this.enemyChange.insertAtFinal(object);
 	}
+	
+
 	
 
 }

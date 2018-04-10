@@ -1,13 +1,19 @@
 package Structure;
 
+import java.util.Random;
+
 public class DoubleList<T> {
 	
 	private DoubleNode<T> start;
 	private int lenght;
+	Random r = new Random();
+	private int value;
+	
 	
 	public DoubleList() {
 		start = null;
-		lenght = -1;
+		lenght = 0;
+		
 	}
 	
 	public void insertAtStart(T data) {
@@ -24,6 +30,14 @@ public class DoubleList<T> {
 			start = node;
 			lenght++;
 		}
+	}
+	
+	public int getLenght() {
+		return lenght;
+	}
+	
+	public void setLenght() {
+		this.lenght = 0;
 	}
 	
 	public void insertAtFinal(T data) {
@@ -72,30 +86,60 @@ public class DoubleList<T> {
 			}
 		}
 	}
-	public T getData (int position) throws Exception{
+	public T getData (int position) {
 		
-		if (position >= 0 && position <= lenght && start.getData() != null) {
+			
 			if (position == 1) {
 				return start.getData();
 				
-			}else {
+			}else{
+				
 				DoubleNode<T> aux = start;
-				for (int i = 0; i < position; i++) {
+				for (int i = 1; i < position; i++) {
 					aux = aux.getNext();
 				}
 				
 				return aux.getData();
 			}
 			
-		}else {
-			throw new Exception("Invalid");
+	}	
+			
+		
+			
+			
+	
+
+	
+	public void Change(int position) {
+		
+		DoubleNode<T> aux = start;
+		for (int i = 0; i >= lenght; i ++){
+			
+			value = r.nextInt(2);
+			
+			if (i == position) {
+				
+				if (value == 0) {
+					aux.setNext(aux);
+				}
+				else {
+					aux.setBack(aux);
+				}
+				
+			}
+			aux = aux.getNext();
 		}
+		
+				
+				
+				
 	}
 	
 	public void delete() {
 		start = null;
 		lenght = 0;
 	}
+
 	
 	
 

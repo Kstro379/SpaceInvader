@@ -28,7 +28,7 @@ public class DoubleNode<T> {
 		this.next = next;
 	}
 
-	public DoubleNode<?> getBack() {
+	public DoubleNode<T> getBack() {
 		return back;
 	}
 

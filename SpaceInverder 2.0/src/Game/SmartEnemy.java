@@ -13,9 +13,14 @@ public class SmartEnemy extends GameObject{
 		super(x, y, id);
 		this.handler = handler;
 		
-		for (int i = 0; i < handler.object.size(); i++) {
-			if (handler.object.get(i).getId() == ID.Player) {
-				player = handler.object.get(i);
+		for (int i = 0; i < handler.player.getLenght(); i++) {
+			try {
+				if (handler.player.getData(i).getId() == ID.Player) {
+					player = handler.player.getData(i);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
@@ -39,7 +44,7 @@ public class SmartEnemy extends GameObject{
 		if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 16)velX *= -1;
 				
-		handler.addObject(new Trail(x, y, ID.Trail, Color.green, 16, 16, 0.1f, handler));
+		//handler.addObject(new Trail(x, y, ID.Trail, Color.green, 16, 16, 0.1f, handler));
 		
 	}
 

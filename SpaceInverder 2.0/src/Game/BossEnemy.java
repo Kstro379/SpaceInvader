@@ -58,7 +58,7 @@ public class BossEnemy extends GameObject{
 			
 			int spawn = r.nextInt(10);
 			if (spawn == 0)
-				handler.addObject((new BossBulletEnemy(x + 48, y + 48, ID.BasicEnemy, handler)));
+				handler.addSimpleList((new BossBulletEnemy(x + 48, y + 48, ID.BasicEnemy, handler)));
 		}
 		
 		
@@ -68,7 +68,7 @@ public class BossEnemy extends GameObject{
 		//if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 96)velX *= -1;
 				
-		handler.addObject(new Trail(x, y, ID.Trail, Color.red, 96, 96, 0.08f, handler));
+		//handler.addSimpleList(new Trail(x, y, ID.Trail, Color.red, 96, 96, 0.08f, handler));
 		
 	}
 

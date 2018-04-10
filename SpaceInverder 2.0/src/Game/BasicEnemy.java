@@ -22,7 +22,7 @@ public class BasicEnemy extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 16, 16);
+		return new Rectangle(x, y, 40, 40);
 	}
 
 	
@@ -34,7 +34,7 @@ public class BasicEnemy extends GameObject{
 		if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 16) {
 			velX *= -1;
-			y += 5;
+			y += 40;
 		}
 				
 		//handler.addObject(new Trail(x, y, ID.Trail, Color.red, 16, 16, 0.1f, handler));

@@ -8,7 +8,7 @@ public class SimpleList<T> {
 	
 	public SimpleList(){
 		start = null;
-		lenght = -1;
+		lenght = 0;
 		
 	}
 	
@@ -22,7 +22,7 @@ public class SimpleList<T> {
 	}
 		
 	public void setLenght() {
-		this.lenght = -1;
+		this.lenght = 0;
 	
 	}
 	
@@ -31,7 +31,7 @@ public class SimpleList<T> {
 		
 		node.setData(data);
 		
-		if (isEmty()) {
+		if (lenght == 0) {
 			start = node;
 			lenght++;
 			
@@ -52,11 +52,9 @@ public class SimpleList<T> {
 		
 	}
 	
-	public T getData (int position) throws Exception {
+	public T getData (int position)  {
 		
 		
-		if (position >= 0 && position <= lenght && start.getData() != null) {
-			
 			if (position == 0) {
 				return start.getData();
 				
@@ -66,13 +64,11 @@ public class SimpleList<T> {
 				for (int i = 0; i < position; i++) {
 					aux = aux.getNext();
 				}
-				
 				return aux.getData();
+			
+
 			}
-		}else {
-			throw new Exception("Invalid");
-		}
-		
+
 	}
 	
 	public void delete() {

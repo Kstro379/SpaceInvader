@@ -62,9 +62,9 @@ public class CircularSimpleList<T> {
 				return aux.getData();
 			}
 
-		} else {
-			throw new Exception("Invalid");
 		}
+		throw new Exception("Invalid");
+
 	}
 	
 	public void delete() {

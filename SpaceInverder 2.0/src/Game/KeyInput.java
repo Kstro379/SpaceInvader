@@ -66,17 +66,25 @@ public class KeyInput extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < handler.object.size(); i++) {
-			GameObject tempObject = handler.object.get(i);
+		for (int i = 0; i < handler.player.getLenght(); i++) {
+			GameObject tempObject;
 			
-			if (tempObject.getId() == ID.Player) {
+			try {
+				tempObject = handler.player.getData(i);
+				if (tempObject.getId() == ID.Player) {
+					
+					if (key == KeyEvent.VK_A) keyDown[0] = false; 
+					if (key == KeyEvent.VK_D) keyDown[1] = false;
+					
+					//Momento horizontal
+					if (!keyDown[0] && !keyDown[1] ) tempObject.setVelY(0);
+				}
+			} catch (Exception e1) {
 				
-				if (key == KeyEvent.VK_A) keyDown[0] = false; 
-				if (key == KeyEvent.VK_D) keyDown[1] = false;
-				
-				//Momento horizontal
-				if (!keyDown[0] && !keyDown[1] ) tempObject.setVelY(0);
+				e1.printStackTrace();
 			}
+			
+			
 		}
 		
 	}

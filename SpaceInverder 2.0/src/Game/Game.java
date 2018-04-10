@@ -57,17 +57,12 @@ public class Game extends Canvas implements Runnable {
 		spawner = new Spawn(handler, hud);
 		r = new Random();
 		
-		if (gameState == STATE.Game) {
-			
-			handler.addSimpleList(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
-			
-			
-		}else {
+		if (gameState != STATE.Game) {
 			for (int i = 0; i < 10; i++) {
-				handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+				handler.addSimpleList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
 			}
 		}
-		
+
 	}
 	
 	public synchronized void start() {
@@ -131,7 +126,7 @@ public class Game extends Canvas implements Runnable {
 					gameState = STATE.End;
 					handler.clearEnemys();
 					for (int i = 0; i < 10; i++) {
-						handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+						handler.addSimpleList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
 					}
 				}
 			}

@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
+
 
 import Game.Game.STATE;
 
@@ -13,7 +13,7 @@ public class Menu extends MouseAdapter {
 	
 	private Handler handler;
 	private HUD hud;
-	private Random r = new Random();
+	
 	
 	public Menu(Game game, Handler handler, HUD hud) {
 		this.handler = handler;
@@ -57,9 +57,8 @@ public class Menu extends MouseAdapter {
 				Game.gameState = STATE.Game;
 				hud.setLevel(1);
 				hud.setScore(0);
-				handler.player.setAtFinal(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
 				handler.clearEnemys();
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+				handler.addSimpleList(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
 				
 		
@@ -69,15 +68,14 @@ public class Menu extends MouseAdapter {
 			//Boton de inicio
 			if (mouseOver(mx, my, 210, 250, 200, 64)) {
 				Game.gameState = STATE.Game;
-				handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
 				handler.clearEnemys();
+				handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
 			
 			}else if (mouseOver(mx, my, 210, 150, 200, 64)) {
 					Game.gameState = STATE.Game;
-					handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
 					handler.clearEnemys();
-					handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+					handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
 					AudioPlayer.getSound("button_sound").play();
 			}
 		}
