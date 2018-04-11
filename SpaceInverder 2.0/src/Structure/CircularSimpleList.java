@@ -1,12 +1,14 @@
 package Structure;
 
+import Game.GameObject;
+
 public class CircularSimpleList<T> {
 	
 	private SimpleNode<T> start;
 	private SimpleNode<T> last;
 	private int lenght;
 	
-	public void  CircularSimleList() {
+	public CircularSimpleList() {
 		start = null;
 		last = null;
 		lenght = 0;
@@ -26,28 +28,24 @@ public class CircularSimpleList<T> {
 		SimpleNode<T> node = new SimpleNode<T>();
 		node.setData(data);
 		
-		if (isEmpty()) {
+		if (start == null) {
 			start = node;
-			last = node;
-			
-			last.setNext(start);
-			
+			last = start;
+			start.setNext(last);
 			lenght++;
 			
 		}else {
 			last.setNext(node);
 			node.setNext(start);
 			last = node;
-			
 			lenght++;
 		}
 		
 		
 	}
 
-	public T getData(int position) throws Exception {
+	public T getData(int position)  {
 
-		if (position >= 0 && position < lenght) {
 
 			if (position == 0) {
 				return start.getData();
@@ -62,10 +60,48 @@ public class CircularSimpleList<T> {
 				return aux.getData();
 			}
 
-		}
-		throw new Exception("Invalid");
+		
 
 	}
+	public void compare() {
+
+		GameObject temp = (GameObject) start.getData();
+		if (temp.getLife() < 1) {
+			start = start.getNext();
+			lenght--;
+
+		} else {
+
+			SimpleNode<T> aux = start;
+			SimpleNode<T> aux2 = null;
+			int check = 0;
+			int cont = 0;
+			
+			while (cont < lenght) {
+				aux2 = aux;
+				temp = (GameObject) aux.getNext().getData();
+				if (temp.getLife() < 1) {
+					aux2 = aux.getNext().getNext();
+					aux.setNext(aux2);
+					check++;
+					lenght--;
+					cont++;
+
+				} else if (check > 0) {
+
+					aux = aux.getNext();
+					temp.res();
+					cont++;
+
+				} else {
+					aux = aux.getNext();
+					cont++;
+				}
+			}
+
+		}
+	}
+	
 	
 	public void delete() {
 		start = null;
@@ -73,5 +109,7 @@ public class CircularSimpleList<T> {
 		lenght = 0;
 		
 	}
+
+	
 
 }

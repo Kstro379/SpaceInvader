@@ -58,7 +58,7 @@ public class Menu extends MouseAdapter {
 				hud.setLevel(1);
 				hud.setScore(0);
 				handler.clearEnemys();
-				handler.addSimpleList(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, ID.Player, handler));
+				handler.addplayerList(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
 				
 		
@@ -69,13 +69,13 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 210, 250, 200, 64)) {
 				Game.gameState = STATE.Game;
 				handler.clearEnemys();
-				handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
+				handler.addplayerList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
 			
 			}else if (mouseOver(mx, my, 210, 150, 200, 64)) {
 					Game.gameState = STATE.Game;
 					handler.clearEnemys();
-					handler.addSimpleList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, ID.Player, handler));
+					handler.addplayerList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 					AudioPlayer.getSound("button_sound").play();
 			}
 		}

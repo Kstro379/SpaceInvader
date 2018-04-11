@@ -10,8 +10,8 @@ public class BossBulletEnemy extends GameObject{
 	public Handler handler;
 	Random r = new Random();
 	
-	public BossBulletEnemy(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public BossBulletEnemy(int x, int y, int life, ID id, Handler handler) {
+		super(x, y, life, id);
 		this.handler = handler;
 		
 		velX = (r.nextInt(5 - -5) + -5);

@@ -8,7 +8,7 @@ import Game.Game.STATE;
 public class KeyInput extends KeyAdapter {
 	
 	private Handler handler;
-	private boolean[] keyDown = new boolean[2];
+	private boolean[] keyDown = new boolean[3];
 	Player player;
 	
 	Game game;
@@ -19,6 +19,7 @@ public class KeyInput extends KeyAdapter {
 		
 		keyDown[0] = false;
 		keyDown[1] = false;
+		keyDown[2] = false;
 		
 	}
 	
@@ -41,7 +42,9 @@ public class KeyInput extends KeyAdapter {
 						tempObject.setVelX(5);
 						keyDown[1] = true;
 					}
-					if (key == KeyEvent.VK_ESCAPE) {
+					if (key == KeyEvent.VK_O) {
+						handler.addplayerList(new Bullet(handler.player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, handler));
+						keyDown[2] = true;
 						
 					}
 				}
@@ -78,6 +81,7 @@ public class KeyInput extends KeyAdapter {
 					
 					if (key == KeyEvent.VK_A) keyDown[0] = false; 
 					if (key == KeyEvent.VK_D) keyDown[1] = false;
+					if (key == KeyEvent.VK_O) keyDown[2] = false;
 					
 					//Momento horizontal
 					if (!keyDown[0] && !keyDown[1] ) tempObject.setVelY(0);

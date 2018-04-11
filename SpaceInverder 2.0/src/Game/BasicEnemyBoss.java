@@ -5,16 +5,20 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 
+
 public class BasicEnemyBoss extends GameObject{
 	
 	public Handler handler;
 	
 	
-	public BasicEnemyBoss(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	
+	public BasicEnemyBoss(int x, int y,  int life, ID id, Handler handler) {
+		super(x, y, life, id);
 		this.handler = handler;
 		
-		velX = 5;
+		velX = 2;
+		
+		
 		
 		
 		
@@ -37,7 +41,11 @@ public class BasicEnemyBoss extends GameObject{
 			y += 40;
 		}
 				
-		//handler.addObject(new Trail(x, y, ID.Trail, Color.red, 16, 16, 0.1f, handler));
+		try {
+			collision();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -47,6 +55,20 @@ public class BasicEnemyBoss extends GameObject{
 		g.fillRect(x, y, 40, 40);
 		
 		
+	}
+	public void collision() throws Exception {
+		for (int i = 0; i < handler.player.getLenght(); i++) {
+			
+			GameObject tempObject = handler.player.getData(i);
+			
+			if (tempObject.getId() == ID.Bullet) {
+				if (getBounds().intersects(tempObject.getBounds())) {
+					setLife(1);
+					handler.player.deleteBulletCol();
+				}
+				
+			}
+		}
 	}
 	
 	public ID getID() {

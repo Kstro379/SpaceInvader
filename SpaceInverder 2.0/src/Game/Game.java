@@ -22,6 +22,8 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 	private Spawn spawner;
 	private Menu menu;
+
+	
 	
 	public enum STATE{
 		Menu,
@@ -34,13 +36,15 @@ public class Game extends Canvas implements Runnable {
 	public static STATE gameState = STATE.Menu;
 	
 	public static BufferedImage sprite_sheet;
+	public static BufferedImage sprite_enemy;
 	
 	public Game() {
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		
 		sprite_sheet = loader.loadImage("/frame.png");
-		System.out.println("loaded");
+		sprite_enemy = loader.loadImage("/enemyRed3.png");
+		
 		
 		handler = new Handler();
 		hud = new HUD();
@@ -59,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 		
 		if (gameState != STATE.Game) {
 			for (int i = 0; i < 10; i++) {
-				handler.addSimpleList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+				handler.addplayerList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), 1, ID.MenuParticle, handler));
 			}
 		}
 
@@ -126,7 +130,7 @@ public class Game extends Canvas implements Runnable {
 					gameState = STATE.End;
 					handler.clearEnemys();
 					for (int i = 0; i < 10; i++) {
-						handler.addSimpleList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+						handler.addplayerList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), 1, ID.MenuParticle, handler));
 					}
 				}
 			}

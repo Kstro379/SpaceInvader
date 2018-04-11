@@ -8,10 +8,12 @@ public abstract class GameObject {
 	protected int x, y;
 	protected ID id;
 	protected int velX, velY;
+	protected int life;
 	
-	public GameObject(int x, int y, ID id) {
+	public GameObject(int x, int y, int life, ID id) {
 		this.x = x;
 		this.y = y;
+		this.life = life;
 		this.id = id;
 	}
 	
@@ -57,6 +59,22 @@ public abstract class GameObject {
 
 	public void setVelY(int velY) {
 		this.velY = velY;
+	}
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int data) {
+		this.life = life - data ;
+	}
+	
+	public void res() {
+		if (getVelX() > 0) {
+			x = x-65;
+		}else {
+			x = x + 65;
+		}
+		
 	}
 	
 	

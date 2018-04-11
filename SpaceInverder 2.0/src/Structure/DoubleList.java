@@ -110,84 +110,64 @@ public class DoubleList<T> {
 
 		DoubleNode<T> aux = start;
 		
+	
+		T back = null;
+		T temp = null;
 		
-		
-		
-		aux = start;
-		GameObject back = null;
-		GameObject temp = null;
-		while(aux != null){
-			
-			GameObject var =  (GameObject) aux.getData();
-			
-			if (var.getId() == ID.BasicEnemyBoss) {
-				
-				if (aux == start && aux.getNext() != null) {
-					
-					
-					
-					 back =  (GameObject) aux.getNext().getData();
-					 back.setX(back.getX() - 50);
-					 temp =  (GameObject) aux.getData();
-					 temp.setX(temp.getX() + 65);
-					 aux.getNext().setData((T) temp);
-					 aux.setData((T) back);
-					 
-					 
-					
-					
-				}else if (aux.getNext() == null) {
-					
-					
-					 
-					 back =  (GameObject) aux.getBack().getData();
-					 back.setX(back.getX() + 65);
-					 temp =  (GameObject) aux.getData();
-					 temp.setX(temp.getX() -65);
-					 aux.getBack().setData((T) temp);
-					 aux.setData((T) back);
-					 
-					 
-					
-					 
-					
-				 }else {
-					 
-					 value = r.nextInt(2);
-					 if (value == 1 && aux.getBack().getBack() != null) {
-						 
-						 back =  (GameObject) aux.getBack().getData();
-						 if(back.getX() < 600 && back.getX() > 100) {
-							 
-							 back.setX(back.getX() + 65);
-							 temp =  (GameObject) aux.getData();
-							 temp.setX(temp.getX() -65);
-							 aux.getBack().setData((T) temp);
-							 aux.setData((T) back);
-						 }
-						
-						 
-					 }else if (value != 1 && aux.getNext().getNext() != null){
-						 
-						 back =  (GameObject) aux.getNext().getData();
-						 if (back.getX() > 100 && back.getX() < 600) {
-							 back.setX(back.getX() - 65);
-							 temp =  (GameObject) aux.getData();
-							 temp.setX(temp.getX() + 65);
-							 aux.getNext().setData((T) temp);
-							 aux.setData((T) back);
-						 }
-						 
-						 
-					 }
-					 
-				}
+		while (aux != null) {
 
+			GameObject var = (GameObject) aux.getData();
+
+			if (var.getId() == ID.BasicEnemyBoss) {
+
+				value = r.nextInt(3);
+
+				if (value == 1 && aux.getNext() != null) {
+
+					back = (T) aux.getNext().getData();
+					if (((GameObject) back).getVelX() > 0 && ((GameObject) back).getX() >= 200
+							&& ((GameObject) back).getX() <= 400) {
+						((GameObject) back).setX(((GameObject) back).getX() - 50);
+						temp = (T) aux.getData();
+						((GameObject) temp).setX(((GameObject) temp).getX() + 50);
+						aux.getNext().setData((T) temp);
+						aux.setData((T) back);
+
+					} else if (((GameObject) back).getVelX() < 0 && ((GameObject) back).getX() >= 200
+							&& ((GameObject) back).getX() <= 400) {
+						((GameObject) back).setX(((GameObject) back).getX() + 50);
+						temp = (T) aux.getData();
+						((GameObject) temp).setX(((GameObject) temp).getX() - 50);
+						aux.getNext().setData((T) temp);
+						aux.setData((T) back);
+					}
+
+				} else if (value != 1 && aux.getBack() != null) {
+
+					back = (T) aux.getBack().getData();
+					if (((GameObject) back).getVelX() > 0 && ((GameObject) back).getX() >= 200
+							&& ((GameObject) back).getX() <= 400) {
+						((GameObject) back).setX(((GameObject) back).getX() + 50);
+						temp = (T) aux.getData();
+						((GameObject) temp).setX(((GameObject) temp).getX() - 50);
+						aux.getBack().setData((T) temp);
+						aux.setData((T) back);
+
+					} else if (((GameObject) back).getVelX() < 0 && ((GameObject) back).getX() >= 200
+							&& ((GameObject) back).getX() <= 400) {
+						((GameObject) back).setX(((GameObject) back).getX() - 50);
+						temp = (T) aux.getData();
+						((GameObject) temp).setX(((GameObject) temp).getX() + 50);
+						aux.getBack().setData((T) temp);
+						aux.setData((T) back);
+					}
+				}
 			}
 			aux = aux.getNext();
 		}
-
 	}
+
+	
 
 	public void deleteNode(T data) {
 		DoubleNode<T> aux = start;

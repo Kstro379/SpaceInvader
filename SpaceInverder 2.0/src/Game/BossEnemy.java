@@ -13,8 +13,8 @@ public class BossEnemy extends GameObject{
 	private int timer2 = 50;
 	Random r = new Random();
 	
-	public BossEnemy(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public BossEnemy(int x, int y, int life, ID id, Handler handler) {
+		super(x, y, life, id);
 		this.handler = handler;
 		
 		velX = 0;
@@ -58,7 +58,7 @@ public class BossEnemy extends GameObject{
 			
 			int spawn = r.nextInt(10);
 			if (spawn == 0)
-				handler.addSimpleList((new BossBulletEnemy(x + 48, y + 48, ID.BasicEnemy, handler)));
+				handler.addplayerList((new BossBulletEnemy(x + 48, y + 48, 5, ID.BasicEnemy, handler)));
 		}
 		
 		

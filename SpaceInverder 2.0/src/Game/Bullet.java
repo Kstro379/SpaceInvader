@@ -1,52 +1,36 @@
 package Game;
 
-
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
-
-public class Player extends GameObject {
+public class Bullet extends GameObject{
 	
-	Handler handler;
+	public Handler handler;
 	
 	
-	private BufferedImage player_image;
-	
-
-	public Player(int x, int y, int life, ID id, Handler handler) {
+	public Bullet(int x, int y, int life, ID id,  Handler handler) {
 		super(x, y, life, id);
 		this.handler = handler;
 		
-		SpriteSheet ss = new SpriteSheet(Game.sprite_sheet);
+		velX = 5;
 		
-		player_image = ss.grabImage(1, 1, 50, 33);
 		
-			
+		
+		
 	}
-
+	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 50, 33);
+		return new Rectangle(x, y, 5, 5);
 	}
-	
 
 	
-
 	public void tick() {
 		
-		x += velX;
+		y -= velX;
 		
-		x = Game.clamp(x, 0, Game.WIDTH - 68);
-		y = 400;
-		
-		try {
-			collision();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+
 	}
-	
 	public void collision() throws Exception {
 		for (int i = 0; i < handler.basic.getLenght(); i++) {
 			
@@ -55,18 +39,17 @@ public class Player extends GameObject {
 			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy || tempObject.getId() == ID.BasicEnemyBoss) {//referencia
 				if (getBounds().intersects(tempObject.getBounds())) {
 					//codigo de colisión
-					HUD.HEALTH -= 2;
+					
+					handler.player.deleteBulletCol();
+					
 				}
-				
 			}
 		}
 	}
-
 	
 	public void render(Graphics g) {
-		
-	
-		g.drawImage(player_image, x, y, null);
+		g.setColor(Color.red);
+		g.fillRect(x, y, 5, 5);
 		
 		
 	}

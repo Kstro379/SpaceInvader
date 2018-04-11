@@ -9,8 +9,8 @@ public class FastEnemy extends GameObject{
 	
 	public Handler handler;
 	
-	public FastEnemy(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public FastEnemy(int x, int y, int life, ID id, Handler handler) {
+		super(x, y, life, id);
 		this.handler = handler;
 		
 		velX = 5;
@@ -33,9 +33,7 @@ public class FastEnemy extends GameObject{
 		
 		if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 16)velX *= -1;
-				
-		//handler.addSimpleList(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.1f, handler));
-		
+					
 	}
 
 	
