@@ -7,6 +7,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import Conection.ServerAndroid;
+
 public class Game extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = 4592960615498928453L;
@@ -22,6 +24,7 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 	private Spawn spawner;
 	private Menu menu;
+	
 
 	
 	
@@ -37,6 +40,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public static BufferedImage sprite_sheet;
 	public static BufferedImage sprite_enemy;
+
 	
 	public Game() {
 		

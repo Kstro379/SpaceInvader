@@ -26,6 +26,7 @@ public class Handler {
 				GameObject tempObject = basic.getData(i);
 				if (tempObject != null) {
 					tempObject.tick();
+					
 
 				}
 			}
@@ -55,15 +56,18 @@ public class Handler {
 
 		}
 		if (claseC.getLenght() > 0) {
+			
 			for (int i = 0; i < claseC.getLenght(); i++) {
 
 				GameObject tempObject;
 				tempObject = (GameObject) claseC.getData(i);
 				if (tempObject != null) {
 					tempObject.tick();
+					
 				}
 			}
 		}
+		
 		if (player.getLenght() > 0) {
 
 			for (int i = 0; i < player.getLenght(); i++) {

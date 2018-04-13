@@ -123,6 +123,9 @@ public class SimpleList<T> {
 					aux.setNext(aux2);
 					check++;
 					lenght--;
+					if (temp.getId() == ID.BasicEnemyBoss) {
+						delete();
+					}
 
 				} else if (check > 0 && temp.getY() >= posY) {
 

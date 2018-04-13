@@ -1,8 +1,9 @@
 package Game;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 
 
@@ -10,7 +11,7 @@ public class BasicEnemyBoss extends GameObject{
 	
 	public Handler handler;
 	
-	
+	private BufferedImage enemy_image;
 	
 	public BasicEnemyBoss(int x, int y,  int life, ID id, Handler handler) {
 		super(x, y, life, id);
@@ -20,17 +21,25 @@ public class BasicEnemyBoss extends GameObject{
 		
 		
 		
+		SpriteSheet ss = new SpriteSheet(Game.sprite_sheet);
 		
+		enemy_image = ss.grabImage(1, 1, 50, 41);
 		
 		
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 40, 40);
+		return new Rectangle(x, y, 50, 33);
 	}
+	
+	
+		
+	
 
 	
 	public void tick() {
+		
+		
 		
 		x += velX;
 		
@@ -40,23 +49,19 @@ public class BasicEnemyBoss extends GameObject{
 			velX *= -1;
 			y += 40;
 		}
-				
 		try {
 			collision();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
+		
 		
 	}
 
-	
-	public void render(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(x, y, 40, 40);
-		
-		
-	}
+
 	public void collision() throws Exception {
+		
+
 		for (int i = 0; i < handler.player.getLenght(); i++) {
 			
 			GameObject tempObject = handler.player.getData(i);
@@ -69,10 +74,19 @@ public class BasicEnemyBoss extends GameObject{
 				
 			}
 		}
+		
+			
+		
 	}
 	
 	public ID getID() {
 		return id;
+	}
+	
+	public void render(Graphics g) {
+		g.drawImage(enemy_image, x, y, null);
+		
+		
 	}
 
 }

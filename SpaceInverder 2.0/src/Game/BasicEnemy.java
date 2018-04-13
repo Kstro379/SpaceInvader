@@ -4,6 +4,7 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 
 public class BasicEnemy extends GameObject{
@@ -11,14 +12,16 @@ public class BasicEnemy extends GameObject{
 	public Handler handler;
 	
 	private BufferedImage enemy_image;
+	private SpriteSheet ss = new SpriteSheet(Game.sprite_enemy);
+	private SpriteSheet ss2 = new SpriteSheet(Game.sprite_sheet);
+	
+	
 	
 	public BasicEnemy(int x, int y,  int life, ID id, Handler handler) {
 		super(x, y, life, id);
 		this.handler = handler;
 		
 		velX = 2;
-		
-		SpriteSheet ss = new SpriteSheet(Game.sprite_enemy);
 		
 		enemy_image = ss.grabImage(1, 1, 50, 41);
 		
@@ -28,6 +31,14 @@ public class BasicEnemy extends GameObject{
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 50, 41);
 	}
+	
+	public void changeEnemy() {
+		
+		ss = ss2;
+		
+	}
+	
+	
 
 	
 	public void tick() {
@@ -47,7 +58,7 @@ public class BasicEnemy extends GameObject{
 			e.printStackTrace();
 		}
 				
-		//handler.addObject(new Trail(x, y, ID.Trail, Color.red, 16, 16, 0.1f, handler));
+		
 		
 	}
 	

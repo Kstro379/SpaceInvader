@@ -92,7 +92,7 @@ public class Spawn {
 				if (check == 0) {
 					
 					value = 0;
-					while (value  > 1 && value < 6) {
+					while (value  < 1) {
 						value = r.nextInt(6);
 					}
 					positionX += 15;

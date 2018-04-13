@@ -6,13 +6,14 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+import Conection.ServerAndroid;
 import Game.Game.STATE;
 
 public class Menu extends MouseAdapter {
 	
 	private Handler handler;
 	private HUD hud;
+	
 	
 	
 	public Menu(Game game, Handler handler, HUD hud) {
@@ -35,6 +36,7 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 210, 250, 200, 64)) {
 				Game.gameState = STATE.Help;
 				AudioPlayer.getSound("button_sound").play();
+
 			}
 
 			// Boton de finalizar
@@ -71,6 +73,7 @@ public class Menu extends MouseAdapter {
 				handler.clearEnemys();
 				handler.addplayerList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
+				//new ServerAndroid();
 			
 			}else if (mouseOver(mx, my, 210, 150, 200, 64)) {
 					Game.gameState = STATE.Game;

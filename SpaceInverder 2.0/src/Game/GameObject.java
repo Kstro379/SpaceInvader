@@ -2,6 +2,7 @@ package Game;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
 public abstract class GameObject {
 	
@@ -9,6 +10,7 @@ public abstract class GameObject {
 	protected ID id;
 	protected int velX, velY;
 	protected int life;
+	private Random r = new Random();
 	
 	public GameObject(int x, int y, int life, ID id) {
 		this.x = x;
@@ -68,6 +70,10 @@ public abstract class GameObject {
 		this.life = life - data ;
 	}
 	
+	public void saveLife(int data) {
+		this.life = data;
+	}
+	
 	public void res() {
 		if (getVelX() > 0) {
 			x = x-65;
@@ -75,6 +81,15 @@ public abstract class GameObject {
 			x = x + 65;
 		}
 		
+	}
+	
+	public void IncrementLife(){
+		
+		int value = 0;
+		while (value < 0) {
+			value = r.nextInt(6);
+		}
+		saveLife(value);
 	}
 	
 	
