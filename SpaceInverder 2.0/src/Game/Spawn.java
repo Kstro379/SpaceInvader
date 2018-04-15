@@ -69,7 +69,7 @@ public class Spawn {
 					}else {
 						
 						positionX += 15;
-						handler.addClaseCList(new BasicEnemy(positionX, 40, 1, ID.BasicEnemy, handler));
+						handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
 						positionX += 50;
 							
 					}
@@ -87,7 +87,7 @@ public class Spawn {
 					
 				}else {
 					positionX += 15;
-					handler.addClaseCList(new BasicEnemy(positionX, 40, 1, ID.BasicEnemy, handler));
+					handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
 					positionX += 50;
 				}
 				cont++;
@@ -228,7 +228,7 @@ public class Spawn {
 //					}else {
 //						
 //						positionX += 15;
-//						handler.addClaseCList(new BasicEnemy(positionX, 40, 1, ID.BasicEnemy, handler));
+//						handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
 //						positionX += 50;
 //							
 //					}
@@ -246,7 +246,7 @@ public class Spawn {
 //					
 //				}else {
 //					positionX += 15;
-//					handler.addClaseCList(new BasicEnemy(positionX, 40, 1, ID.BasicEnemy, handler));
+//					handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
 //					positionX += 50;
 //				}
 //				cont++;
