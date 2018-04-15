@@ -52,14 +52,18 @@ public class Player extends GameObject {
 			
 			GameObject tempObject = handler.basic.getData(i);
 			
-			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy || tempObject.getId() == ID.BasicEnemyBoss) {//referencia
+			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy
+					|| tempObject.getId() == ID.BasicEnemyBoss) {// referencia
 				if (getBounds().intersects(tempObject.getBounds())) {
-					//codigo de colisión
+					// codigo de colisión
 					HUD.HEALTH -= 2;
 				}
-				
+
 			}
 		}
+		 
+		
+		
 	}
 
 	
@@ -68,6 +72,12 @@ public class Player extends GameObject {
 	
 		g.drawImage(player_image, x, y, null);
 		
+		
+	}
+
+	@Override
+	public void changeEnemy() {
+		// TODO Auto-generated method stub
 		
 	}
 

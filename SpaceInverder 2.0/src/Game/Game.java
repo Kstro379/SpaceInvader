@@ -7,7 +7,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import Conection.ServerAndroid;
+//import Conection.ServerAndroid;
 
 public class Game extends Canvas implements Runnable {
 	

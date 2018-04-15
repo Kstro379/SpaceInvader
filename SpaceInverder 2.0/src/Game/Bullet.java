@@ -54,4 +54,10 @@ public class Bullet extends GameObject{
 		
 	}
 
+	@Override
+	public void changeEnemy() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

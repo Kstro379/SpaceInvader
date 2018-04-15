@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import Conection.ServerAndroid;
+//import Conection.ServerAndroid;
 import Game.Game.STATE;
 
 public class Menu extends MouseAdapter {

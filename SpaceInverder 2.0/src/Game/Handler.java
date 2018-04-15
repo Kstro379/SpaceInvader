@@ -19,8 +19,8 @@ public class Handler {
 	Game game;
 
 	public void tick() {
-
-		if (basic.getLenght() > 0) {
+		
+		if (basic != null) {
 			for (int i = 0; i < basic.getLenght(); i++) {
 
 				GameObject tempObject = basic.getData(i);
@@ -66,6 +66,7 @@ public class Handler {
 					
 				}
 			}
+			claseC.compare();
 		}
 		
 		if (player.getLenght() > 0) {
@@ -114,7 +115,7 @@ public class Handler {
 
 				}
 			}
-			claseC.compare();
+			
 		}
 
 		if (basic.getLenght() > 0) {
@@ -125,6 +126,7 @@ public class Handler {
 				tempObject = (GameObject) basic.getData(i);
 				if (tempObject != null) {
 					tempObject.render(g);
+					
 
 				}
 			}
@@ -162,7 +164,7 @@ public class Handler {
 
 			}
 		}
-
+		
 	}
 
 	public void clearEnemys() {

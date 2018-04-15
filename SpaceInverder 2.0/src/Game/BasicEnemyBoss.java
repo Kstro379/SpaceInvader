@@ -17,7 +17,7 @@ public class BasicEnemyBoss extends GameObject{
 		super(x, y, life, id);
 		this.handler = handler;
 		
-		velX = 2;
+		velX = 3;
 		
 		
 		
@@ -29,25 +29,20 @@ public class BasicEnemyBoss extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 50, 33);
+		return new Rectangle(x, y, 50, 41);
 	}
 	
-	
-		
-	
-
 	
 	public void tick() {
 		
 		
 		
 		x += velX;
-		
-		
 		if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 16) {
 			velX *= -1;
 			y += 40;
+			
 		}
 		try {
 			collision();
@@ -86,6 +81,12 @@ public class BasicEnemyBoss extends GameObject{
 	public void render(Graphics g) {
 		g.drawImage(enemy_image, x, y, null);
 		
+		
+	}
+
+	@Override
+	public void changeEnemy() {
+		// TODO Auto-generated method stub
 		
 	}
 

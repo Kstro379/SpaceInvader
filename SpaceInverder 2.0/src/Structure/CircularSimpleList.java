@@ -1,6 +1,6 @@
 package Structure;
 
-import java.util.Random;
+
 
 
 import Game.GameObject;
@@ -12,9 +12,9 @@ public class CircularSimpleList<T> {
 	private SimpleNode<T> start;
 	private SimpleNode<T> last;
 	private int lenght;
-	private Random r = new Random();
-	private int value = 0;
-	private int newPos = 0;
+	private int posY;
+	private int cont;
+	private boolean var = false;
 	
 	
 	public CircularSimpleList() {
@@ -68,76 +68,99 @@ public class CircularSimpleList<T> {
 				}
 				return aux.getData();
 			}
-
-		
-
 	}
-	
-
-		
-		
-	public void compare() {
-
-		GameObject temp = (GameObject) start.getData();
-		
-		if (temp.getLife() < 1) {
 			
-				
-			last.setNext(last.getNext().getNext());
-			start = last.getNext();
+	public void compare() {
+		
+		cont = 3;
+		
+		if (((GameObject) start.getData()).getLife() < 1) {
+			
+			if (((GameObject) start.getData()).getId() == ID.BasicEnemyBoss) {
+				var = true;
+			}
+			start = start.getNext();
+			last.setNext(start);
 			lenght--;
 			
 			
-			
-
-		} else {
-
-			SimpleNode<T> aux = start;
-			SimpleNode<T> aux2 = null;
-			
-			int check = 0;
-			int cont = 0;
-			
-			while (cont < lenght) {
-				
-				aux2 = aux;
-				temp = (GameObject) aux.getNext().getData();
-				
-				if (temp.getLife() < 1) {
-					
-					if (cont == lenght - 1) {
-						aux2 = aux.getNext().getNext();
-						aux.setNext(aux2);
-						last = aux;
-						start = aux2;
-					}
-					
-					else {
-						
-						aux2 = aux.getNext().getNext();
-						aux.setNext(aux2);
-						last.setNext(start);
-						check++;
-						lenght--;
-						cont++;	
-					}
-					
-					
-				} else if (check > 0) {
-
+			if (var == true) {
+				SimpleNode<T> aux = start;
+				while (cont == 0) {
 					aux = aux.getNext();
-					temp.res();
-					cont++;
-
-				} else {
-					aux = aux.getNext();
-					cont++;
 				}
+				((GameObject) aux.getData()).changeEnemy();
+				var = false;
 			}
-
-		}
+			
+		}else {
+			
+			SimpleNode<T> aux = start;
+			int check = 0;
+			
+			while(((GameObject) aux.getNext().getData()).getLife() >= 1 && aux != last ) {
+				aux = aux.getNext();
+			}
+			
+			if (aux.getNext() == last && ((GameObject) aux.getNext().getData()).getLife() < 1) {
+				
+				if (((GameObject) aux.getNext().getData()).getId() == ID.BasicEnemyBoss) {
+					var = true;
+				}
+				
+				aux.setNext(start);
+				last = aux;
+				posY = ((GameObject) aux.getNext().getData()).getY();
+				check = 1;
+				lenght--;
+				
+				if (var == true) {
+					SimpleNode<T> aux2 = start;
+					while (cont == 0) {
+						aux2 = aux2.getNext();
+					}
+					((GameObject) aux2.getData()).changeEnemy();
+					var = false;
+				}
+				
+			}else if (((GameObject) aux.getNext().getData()).getLife() < 1 ){
+				
+				if (((GameObject) aux.getNext().getData()).getId() == ID.BasicEnemyBoss) {
+					var = true;
+				}
+				
+				SimpleNode<T> aux2 = aux.getNext() ;
+				posY = ((GameObject) aux.getNext().getData()).getY();
+				aux.setNext(aux2.getNext());
+				check = 1;
+				lenght--;
+				
+				if (var == true) {
+					SimpleNode<T> aux3 = start;
+					while (cont == 0) {
+						aux3 = aux3.getNext();
+					}
+					((GameObject) aux3.getData()).changeEnemy();
+					var = false;
+				}
+			
+			}
+			
+			while (aux != last) {
+				
+			if (check > 0 && ((GameObject) aux.getData()).getY() >= posY) {
+				aux = aux.getNext();
+				((GameObject) aux.getData()).res();
+			}
+			else {
+				aux = aux.getNext();
+			}
+			
+			
+			}
+		}	
+		
 	}
-	
 	
 	public void delete() {
 		start = null;
