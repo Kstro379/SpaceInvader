@@ -55,7 +55,33 @@ public class Bullet extends GameObject{
 	}
 
 	@Override
-	public void changeEnemy() {
+	public void changeEnemy(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sumPos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resPos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void chanceX(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeY(int value) {
 		// TODO Auto-generated method stub
 		
 	}

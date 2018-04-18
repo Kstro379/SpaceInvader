@@ -2,6 +2,8 @@ package Game;
 
 import java.awt.Graphics;
 
+import Structure.CircularDinamicList;
+import Structure.CircularDoubleList;
 import Structure.CircularSimpleList;
 import Structure.DoubleList;
 import Structure.SimpleList;
@@ -12,7 +14,9 @@ public class Handler {
 	SimpleList<GameObject> basic = new SimpleList<GameObject>();
 	SimpleList<GameObject> claseA = new SimpleList<GameObject>();
 	CircularSimpleList<GameObject> claseC = new CircularSimpleList<GameObject>();
-	DoubleList<GameObject> enemyChange = new DoubleList<GameObject>();
+	CircularDinamicList<GameObject> claseD = new CircularDinamicList<GameObject>(); 
+	DoubleList<GameObject> claseB = new DoubleList<GameObject>();
+	CircularDoubleList<GameObject> claseE = new CircularDoubleList<GameObject>();
 
 	private int cont;
 
@@ -42,11 +46,11 @@ public class Handler {
 			}
 		}
 
-		if (enemyChange.getLenght() > 0) {
-			for (int i = 0; i < enemyChange.getLenght(); i++) {
+		if (claseB.getLenght() > 0) {
+			for (int i = 0; i < claseB.getLenght(); i++) {
 
 				GameObject tempObject;
-				tempObject = (GameObject) enemyChange.getData(i);
+				tempObject = (GameObject) claseB.getData(i);
 				if (tempObject != null) {
 					tempObject.tick();
 				}
@@ -67,6 +71,38 @@ public class Handler {
 				}
 			}
 			claseC.compare();
+		}
+
+		if (claseD.getLenght() > 0) {
+
+			for (int i = 0; i < claseD.getLenght(); i++) {
+
+				GameObject tempObject;
+				tempObject = (GameObject) claseD.getData(i);
+				if (tempObject != null) {
+					tempObject.tick();
+
+				}
+			}
+			claseD.compare();
+			
+			
+		}
+		
+		if (claseE.getLenght() > 0) {
+
+			for (int i = 0; i < claseE.getLenght(); i++) {
+
+				GameObject tempObject;
+				tempObject = (GameObject) claseE.getData(i);
+				if (tempObject != null) {
+					tempObject.tick();
+
+				}
+			}
+			claseE.compare();
+			
+			
 		}
 		
 		if (player.getLenght() > 0) {
@@ -117,6 +153,21 @@ public class Handler {
 			}
 			
 		}
+		
+		if (claseD.getLenght() > 0) {
+
+			for (int i = 0; i < claseD.getLenght(); ++i) {
+
+				GameObject tempObject;
+
+				tempObject = (GameObject) claseD.getData(i);
+				if (tempObject != null) {
+					tempObject.render(g);
+
+				}
+			}
+			
+		}
 
 		if (basic.getLenght() > 0) {
 			for (int i = 0; i < basic.getLenght(); ++i) {
@@ -146,24 +197,36 @@ public class Handler {
 			claseA.compare();
 		}
 		
-		if (enemyChange.getLenght() > 0) {
-			for (int i = 0; i < enemyChange.getLenght(); i++) {
+		if (claseE.getLenght() > 0) {
+			for (int i = 0; i < claseE.getLenght(); ++i) {
 
 				GameObject tempObject;
-				tempObject = (GameObject) enemyChange.getData(i);
+
+				tempObject = (GameObject) claseE.getData(i);
+				if (tempObject != null) {
+					tempObject.render(g);
+
+				}
+			}
+			
+			claseE.circle();
+		}
+		
+		if (claseB.getLenght() > 0) {
+			for (int i = 0; i < claseB.getLenght(); i++) {
+
+				GameObject tempObject;
+				
+				tempObject = (GameObject) claseB.getData(i);
 				if (tempObject != null) {
 					tempObject.render(g);
 					cont++;
 
 				}
-				if (cont > 200) {
-					enemyChange.Change();
-					cont = 0;
-
-				}
+				
 
 			}
-		}
+		}claseB.deleteNode();
 		
 	}
 
@@ -173,7 +236,9 @@ public class Handler {
 		player.delete();
 		claseA.delete();
 		claseC.delete();
-		enemyChange.delete();
+		claseD.delete();
+		claseE.delete();
+		claseB.delete();
 
 		if (Game.gameState != Game.STATE.End) {
 			// Lo quite por que en el metodo de limpiar los agrega de nuevo en el menu
@@ -195,7 +260,7 @@ public class Handler {
 	}
 
 	public void addDoubleList(GameObject object) {
-		this.enemyChange.setAtFinal(object);
+		this.claseB.setAtFinal(object);
 	}
 	public void addClaseAList(GameObject object) {
 		this.claseA.setAtFinal(object);
@@ -203,5 +268,13 @@ public class Handler {
 	
 	public void addClaseCList(GameObject object) {
 		this.claseC.addAtFinal(object);
+	}
+	
+	public void addClaseDList(GameObject object) {
+		this.claseD.addAtFinal(object);
+	}
+	
+	public void addClaseEList(GameObject object) {
+		this.claseE.addAtFinal(object);
 	}
 }

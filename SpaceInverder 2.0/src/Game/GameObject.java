@@ -20,9 +20,13 @@ public abstract class GameObject {
 	}
 	
 	public abstract void tick();
-	public abstract void changeEnemy();
+	public abstract void changeEnemy(int value);
 	public abstract void render(Graphics g);
 	public abstract Rectangle getBounds();
+	public abstract void sumPos();
+	public abstract void resPos();
+	public abstract void chanceX(int value);
+	public abstract void changeY(int value);
 
 	public int getX() {
 		return x;

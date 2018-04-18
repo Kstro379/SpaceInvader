@@ -2,6 +2,8 @@ package Game;
 
 import java.util.Random;
 
+
+
 public class Spawn {
 	
 	private Handler handler;
@@ -22,8 +24,7 @@ public class Spawn {
 		this.hud = hud;
 		positionX = 100;
 		positionY = 200;
-		
-		
+	
 	}
 	
 	public void tick() {
@@ -47,60 +48,37 @@ public class Spawn {
 			}else if (hud.getLevel() == 2 && cont == 0 ) {
 				
 				
-				positionX = 100;
-				
-				for (int i = 1; i < 5; i++) {
 
-					value = r.nextInt(3);
-					
-					if (value == 2 && check == 0) {
-						
-						value = 0;
-						while (value  < 1) {
-							value = r.nextInt(6);
-						}
-						
-						positionX += 15;
-						handler.addClaseCList(new BasicEnemyBoss(positionX, 40, value, ID.BasicEnemyBoss, handler));
-						positionX += 50;
-						check++;
-						
-					
-					}else {
-						
-						positionX += 15;
-						handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
-						positionX += 50;
-							
-					}
-					
-				}
-				if (check == 0) {
-					
-					value = 0;
-					while (value  < 1) {
-						value = r.nextInt(6);
-					}
-					positionX += 15;
-					handler.addClaseCList(new BasicEnemyBoss(positionX, 40, value, ID.BasicEnemyBoss, handler));
-					positionX += 50;
-					
-				}else {
-					positionX += 15;
-					handler.addClaseCList(new BasicEnemy(positionX, 40, 10, ID.BasicEnemy, handler));
-					positionX += 50;
-				}
-				cont++;
-//					for (int i = 1; i <= 5; i++) {
-//						
-//						positionX += 15;
-//						handler.addbasicList(new BasicEnemy(positionX, positionY, 1, ID.BasicEnemy, handler));
-//						positionX += 50;
-//					cont++;
-	
+//				positionX = 400;
+//				positionY = 300;
+//				FastEnemy e1 = new FastEnemy(positionX-1, positionY, 5, ID.FastEnemy, handler);
+//				e1.setVelX(-1);
+//				e1.setVelY(-1);
+//				FastEnemy e2 = new FastEnemy(positionX-1, positionY-50, 5, ID.FastEnemy, handler);
+//				e2.setVelX(-1);
+//				e2.setVelY(-1);
+//				FastEnemy e3 = new FastEnemy(positionX+1, positionY-150, 5, ID.FastEnemy, handler);
+//				e3.setVelX(1);
+//				e3.setVelY(1);
+//				FastEnemy e4 = new FastEnemy(positionX+1, positionY-200, 5, ID.FastEnemy, handler);
+//				e4.setVelX(1);
+//				e4.setVelY(1);
+//				
+//				handler.addClaseEList(e1);
+//				handler.addClaseEList(e2);
+//				handler.addClaseEList(new BasicEnemyBoss(positionX, positionY-100, 10, ID.BasicEnemyBoss,handler));
+//				handler.addClaseEList(e3);
+//				handler.addClaseEList(e4);
+//				cont++;
 				
-					
-	//			}
+				// for (int i = 1; i <= 5; i++) {
+				//
+				// positionX += 15;
+				// handler.addbasicList(new BasicEnemy(positionX, positionY, 1, ID.BasicEnemy,
+				// handler));
+				// positionX += 50;
+				// cont++;
+
 				
 				
 				
@@ -153,53 +131,56 @@ public class Spawn {
 					
 				
 			
-//			}else if (hud.getLevel() == 4 && cont == 0) {
-//				
-//				positionX = 50;
-//				
-//				for (int i = 1; i < 5; i++) {
-//
-//					value = 2;
-//					
-//					if (value == 2 && check == 0) {
-//						
-//						value = 0;
-//						while (value  < 1) {
-//							value = r.nextInt(6);
-//						}
-//						
-//						
-//						handler.addDoubleList(new BasicEnemyBoss(positionX, 20, value, ID.BasicEnemyBoss, handler));
-//						positionX += 50;
-//						check++;
-//						
-//					
-//					}else {
-//						
-//						
-//						handler.addDoubleList(new BasicEnemy(positionX, 20, 1, ID.BasicEnemy, handler));
-//						positionX += 50;
-//							
-//					}
-//					//Comprobar que se agrego!!!
-//					
-//				}
-//				if (check == 0) {
-//					
-//					value = 0;
-//					while (value  > 1 && value < 6) {
-//						value = r.nextInt(6);
-//					}
-//					
-//					handler.addDoubleList(new BasicEnemyBoss(positionX, 20, value, ID.BasicEnemyBoss, handler));
-//					positionX += 50;
-//				}
-//				else {
-//					
-//					handler.addDoubleList(new BasicEnemy(positionX, 20, 1, ID.BasicEnemy, handler));
-//					positionX += 50;
-//				}
-//				cont++;
+			}else if (hud.getLevel() == 4 && cont == 0) {
+				
+				positionX = 50;
+				check = 0;
+				
+				for (int i = 1; i < 5; i++) {
+
+					value = r.nextInt(3);
+					
+					if (value == 2 && check == 0) {
+						
+						value = 0;
+						while (value  < 1) {
+							value = r.nextInt(6);
+						}
+						
+						positionX += 15;
+						handler.addDoubleList(new BasicEnemyBoss(positionX, 20, value, ID.BasicEnemyBoss, handler));
+						positionX += 50;
+						check++;
+						
+					
+					}else {
+						
+						positionX += 15;
+						handler.addDoubleList(new BasicEnemy(positionX, 20, 1, ID.BasicEnemy, handler));
+						positionX += 50;
+							
+					}
+					//Comprobar que se agrego!!!
+					
+				}
+				if (check == 0) {
+					
+					value = 0;
+					while (value < 1) {
+						value = r.nextInt(6);
+					}
+					
+					positionX += 15;
+					handler.addDoubleList(new BasicEnemyBoss(positionX, 20, value, ID.BasicEnemyBoss, handler));
+					positionX += 50;
+				}
+				else {
+					
+					positionX += 15;
+					handler.addDoubleList(new BasicEnemy(positionX, 20, 1, ID.BasicEnemy, handler));
+					positionX += 50;
+				}
+				cont++;
 			
 				
 			
@@ -253,7 +234,63 @@ public class Spawn {
 //				
 //			}else if (hud.getLevel() == 6) {
 //				
+//				positionX = 100;
 //				
+//				for (int i = 1; i < 5; i++) {
+//				
+//				value = r.nextInt(3);
+//
+//				if (value == 2 && check == 0) {
+//
+//					value = 0;
+//					while (value < 1) {
+//						value = r.nextInt(6);
+//					}
+//
+//					positionX += 15;
+//					handler.addClaseDList(new BasicEnemyBoss(positionX, 40, value, ID.BasicEnemyBoss, handler));
+//					positionX += 50;
+//					check++;
+//
+//				} else {
+//
+//					value = 0;
+//					while (value < 1) {
+//						value = r.nextInt(6);
+//
+//						positionX += 15;
+//						handler.addClaseDList(new BasicEnemy(positionX, 40, value, ID.BasicEnemy, handler));
+//						positionX += 50;
+//
+//					}
+//
+//				}
+//
+//			}
+//			if (check == 0) {
+//
+//				value = 0;
+//				while (value < 1) {
+//					value = r.nextInt(6);
+//				}
+//				positionX += 15;
+//				handler.addClaseDList(new BasicEnemyBoss(positionX, 40, value, ID.BasicEnemyBoss, handler));
+//				positionX += 50;
+//
+//			} else {
+//
+//				value = 0;
+//				while (value < 1) {
+//					value = r.nextInt(6);
+//
+//					positionX += 15;
+//					handler.addClaseCList(new BasicEnemy(positionX, 40, value, ID.BasicEnemy, handler));
+//					positionX += 50;
+//				}
+//			
+//				cont++;
+//			}
+//			
 //			}else if (hud.getLevel() == 7) {
 //				
 //			}else if (hud.getLevel() == 10) {

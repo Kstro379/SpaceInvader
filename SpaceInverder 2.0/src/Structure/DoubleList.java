@@ -53,143 +53,99 @@ public class DoubleList<T> {
 			lenght++;
 		}
 		
-	}public void deleteData(T data) {
-		if (start != null) {
-			DoubleNode<T> aux = start;
-			DoubleNode<T> ant = null;
-			
-			while(aux != null) {
-				if (aux.getData() == data) {
-					if (ant == null) {
-						start = start.getNext();
-						aux.setNext(null);
-						aux = start;
-						lenght--;
-						
-					}else {
-						ant.setNext(aux.getNext());
-						aux.setNext(null);
-						aux = ant.getNext();
-						lenght--;
-					}
-				}else {
-					ant = aux;
-					aux = aux.getNext();
-					lenght--;
-				}
+	}
+	
+	public void change() {
+		DoubleNode<T> aux =  new DoubleNode<T>();
+		aux = start;
+		while(aux != null) {
+			if (((GameObject) aux.getData()).getId() == ID.BasicEnemyBoss) {
+				aux = aux.getNext();
 			}
+			aux = aux.getNext();
 		}
-	}
-	public T getData (int position) {
 		
-			
-			if (position == 0) {
-				return start.getData();
-				
-			}else{
-				
-				DoubleNode<T> aux = start;
-				for (int i = 0; i < position; i++) {
-					aux = aux.getNext();
-					
-				}
-				
-				return aux.getData();
-			}
-			
 	}
 	
-			
+	public void deleteNode() {
+		DoubleNode<T> aux =  new DoubleNode<T>();
+		DoubleNode<T> aux2 =  new DoubleNode<T>();
 		
-			
-			
-	
-
-	
-	public void Change() {
-
-		DoubleNode<T> aux = start;
-		
-	
-		T back = null;
-		T temp = null;
+		aux = start;
+		aux2 = null;
 		
 		while (aux != null) {
-
-			GameObject var = (GameObject) aux.getData();
-
-			if (var.getId() == ID.BasicEnemyBoss) {
-
-				value = r.nextInt(3);
-
-				if (value == 1 && aux.getNext() != null) {
-
-					back = (T) aux.getNext().getData();
-					if (((GameObject) back).getVelX() > 0 && ((GameObject) back).getX() >= 200
-							&& ((GameObject) back).getX() <= 400) {
-						((GameObject) back).setX(((GameObject) back).getX() - 50);
-						temp = (T) aux.getData();
-						((GameObject) temp).setX(((GameObject) temp).getX() + 50);
-						aux.getNext().setData((T) temp);
-						aux.setData((T) back);
-
-					} else if (((GameObject) back).getVelX() < 0 && ((GameObject) back).getX() >= 200
-							&& ((GameObject) back).getX() <= 400) {
-						((GameObject) back).setX(((GameObject) back).getX() + 50);
-						temp = (T) aux.getData();
-						((GameObject) temp).setX(((GameObject) temp).getX() - 50);
-						aux.getNext().setData((T) temp);
-						aux.setData((T) back);
-					}
-
-				} else if (value != 1 && aux.getBack() != null) {
-
-					back = (T) aux.getBack().getData();
-					if (((GameObject) back).getVelX() > 0 && ((GameObject) back).getX() >= 200
-							&& ((GameObject) back).getX() <= 400) {
-						((GameObject) back).setX(((GameObject) back).getX() + 50);
-						temp = (T) aux.getData();
-						((GameObject) temp).setX(((GameObject) temp).getX() - 50);
-						aux.getBack().setData((T) temp);
-						aux.setData((T) back);
-
-					} else if (((GameObject) back).getVelX() < 0 && ((GameObject) back).getX() >= 200
-							&& ((GameObject) back).getX() <= 400) {
-						((GameObject) back).setX(((GameObject) back).getX() - 50);
-						temp = (T) aux.getData();
-						((GameObject) temp).setX(((GameObject) temp).getX() + 50);
-						aux.getBack().setData((T) temp);
-						aux.setData((T) back);
-					}
-				}
-			}
-			aux = aux.getNext();
-		}
-	}
-
-	
-
-	public void deleteNode(T data) {
-		DoubleNode<T> aux = start;
-		DoubleNode<T> back = start;
-
-		aux = start;
-		back = null;
-		while(aux != null) {
-			if (start.getData() == data) {
-				if (aux == start) {
+			
+			if (((GameObject) aux.getData()).getLife() < 1) {
+				
+				if (((GameObject) aux.getData()).getId() == ID.BasicEnemyBoss && ((GameObject) aux.getData()).getLife() < 1) {
+					delete();
+				
+				}else if (aux == start && lenght == 1) {
+					delete(); 
+					
+				}else if(aux == start) {
 					start = start.getNext();
-					start.setBack(null) ;
+					start.setBack(null);
+					lenght--;
+					
+					
+				}else if (aux.getNext() == null){
+					aux2.setNext(null);
+					aux = aux2;
+					lenght--;
 					
 				}else {
-					back.setNext(aux.getNext());
-					aux.getNext().setBack(aux.getBack());
+					aux2.setNext(aux.getNext());
+					aux2.getNext().setBack(aux2);
+					lenght--;
+					
+					if (((GameObject) aux2.getData()).getVelX() > 1) {
+						DoubleNode<T> aux3 =  new DoubleNode<T>();
+						aux3 = aux2.getNext();
+						while (aux3 != null) {
+							((GameObject) aux3.getData()).resPos();
+							aux3 = aux3.getNext();
+							System.out.println("eeeeeeeeeeeeee");
+						}
+						
+						
+					}else {
+						
+						DoubleNode<T> aux3 =  new DoubleNode<T>();
+						aux3 = aux2.getNext();
+						while (aux3 != null) {
+							((GameObject) aux3.getData()).res();;
+							aux3 = aux3.getNext();
+							System.out.println("oooooooooooooo");
+						}
+						
+					}
 				}
 			}
-			back = aux;
+			aux2 = aux;
 			aux = aux.getNext();
+			
 		}
+			
 		
+		
+	}
+	
+	public T getData(int position) {
+
+		if (position == 0) {
+			return start.getData();
+
+		} else {
+			DoubleNode<T> aux = start;
+
+			for (int i = 0; i < position; i++) {
+				aux = aux.getNext();
+
+			}
+			return aux.getData();
+		}
 	}
 	
 	public void delete() {

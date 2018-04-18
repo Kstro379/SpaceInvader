@@ -6,6 +6,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import Game.GameObject;
+import Game.Handler;
+
 
 
 public class BasicEnemy extends GameObject{
@@ -16,6 +19,7 @@ public class BasicEnemy extends GameObject{
 	private SpriteSheet ss = new SpriteSheet(Game.sprite_enemy);
 	private SpriteSheet ss2 = new SpriteSheet(Game.sprite_sheet);
 	private Random r = new Random();
+	private int cont = 0;
 	
 	
 	
@@ -35,22 +39,40 @@ public class BasicEnemy extends GameObject{
 		return new Rectangle(x, y, 50, 41);
 	}
 	
-	public void changeEnemy() {
+	public void changeEnemy(int value) {
 		
-		enemy_image = ss2.grabImage(1, 1, 50, 41);
-		id = ID.BasicEnemyBoss;
-		life = 3;
+		if (value == 1) {
+			
+			enemy_image = ss2.grabImage(1, 1, 50, 41);
+			id = ID.BasicEnemyBoss;
+			
+			
+			while (cont < 1) {
+				cont = r.nextInt(8);
+			}
+			
+			life = cont;
+			
+		}else {
+			
+			enemy_image = ss2.grabImage(1, 1, 50, 41);
+			id = ID.BasicEnemyBoss;
+			
+		}
+		
 		
 		
 		
 	}
-	
 
+	
 	public void tick() {
 		
 		x += velX;
+		
 		if (y <= 0 || y >= Game.HEIGHT - 32)velY *= -1;
 		if (x <= 0 || x >= Game.WIDTH - 16) {
+			
 			velX *= -1;
 			y += 40;
 		}
@@ -86,6 +108,43 @@ public class BasicEnemy extends GameObject{
 	public void render(Graphics g) {
 		g.drawImage(enemy_image, x, y, null);
 		
+		
+	}
+
+	@Override
+	public void sumPos() {
+		
+		if (getVelX() > 0) {
+			x = x+65;
+		}else {
+			x = x - 65;
+		}
+		
+		
+	}
+
+	@Override
+	public void resPos() {
+		
+		if (getVelX() > 0) {
+			x = x-65;
+		}else {
+			x = x + 65;
+		}
+		
+	}
+
+
+
+	@Override
+	public void chanceX(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeY(int value) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -1,14 +1,11 @@
 package Structure;
 
-
-
-
 import java.util.Random;
 
 import Game.GameObject;
 import Game.ID;
 
-public class CircularSimpleList<T> {
+public class CircularDinamicList<T> {
 	
 	private SimpleNode<T> start;
 	private SimpleNode<T> last;
@@ -19,7 +16,7 @@ public class CircularSimpleList<T> {
 	private Random r = new Random();
 	
 	
-	public CircularSimpleList() {
+	public CircularDinamicList() {
 		start = null;
 		last = null;
 		lenght = 0;
@@ -95,7 +92,7 @@ public class CircularSimpleList<T> {
 					aux = aux.getNext();
 					cont--;
 				}
-				((GameObject) aux.getData()).changeEnemy(1);
+				((GameObject) aux.getData()).changeEnemy(2);
 				var = false;
 				
 			}
@@ -127,7 +124,7 @@ public class CircularSimpleList<T> {
 						aux2 = aux2.getNext();
 						cont--;
 					}
-					((GameObject) aux2.getData()).changeEnemy(1);
+					((GameObject) aux2.getData()).changeEnemy(2);
 					var = false;
 					
 				}
@@ -150,7 +147,7 @@ public class CircularSimpleList<T> {
 						aux3 = aux3.getNext();
 						cont--;
 					}
-					((GameObject) aux3.getData()).changeEnemy(1);
+					((GameObject) aux3.getData()).changeEnemy(2);
 					var = false;
 					
 				}
@@ -179,7 +176,84 @@ public class CircularSimpleList<T> {
 		lenght = 0;
 		
 	}
+	
+	public void bubleSort() {
+		
+		SimpleNode<T> aux = start;
+		var = false;
+		
+		while (aux != last || cont != 0) {
+			
+			cont = 0;
+			
+			if (aux == last) {
+				aux = start;
+			}
+			
+			
 
+//			if (((GameObject) start.getNext().getData()).getLife() > ((GameObject) start.getData()).getLife()) {
+//				
+//				System.out.println("qqqqqqqqqqqq");
+//				SimpleNode<T> aux1 = start;
+//				SimpleNode<T> aux2 = start.getNext().getNext();
+//				
+//				last.setNext(start.getNext());
+//				start = last.getNext();
+//				((GameObject) start.getData()).resPos();
+//				start.setNext(aux1);
+//				start.getNext().setNext(aux2);
+//				((GameObject) start.getNext().getData()).sumPos();
+//				
+//				
+//				aux = aux.getNext();
+//				cont++;
+//				System.out.println("aaaaaaaaaaaaaaaaaaaa");
+
+//			} if (aux.getNext().getNext() == last) {
+//
+//				if (((GameObject) aux.getNext().getData()).getLife() < ((GameObject) aux.getNext().getNext().getData()).getLife()) {
+//					
+//					SimpleNode<T> aux2 = aux.getNext();
+//					System.out.println("rrrrrrrrrrrr");
+//					aux.setNext(last);
+//					aux.getNext().setNext(aux2);
+//					aux.getNext().getNext().setNext(start);
+//					last = aux.getNext().getNext();
+//					
+//					((GameObject) last.getData()).sumPos();
+//					((GameObject) aux.getNext().getData()).resPos();
+//
+//					aux = aux.getNext();
+//					cont++;
+//					System.out.println("eeeeeeeeeeeeeeee");
+//				}
+//
+//			} if (lenght > 3) {
+//
+//				if (((GameObject) aux.getNext().getData()).getLife() < ((GameObject) aux.getNext().getNext().getData()).getLife()) {
+//					System.out.println("lllllllllllllll");
+//					SimpleNode<T> aux2 = aux.getNext();
+//					SimpleNode<T> aux3 = aux.getNext().getNext().getNext();
+//					
+//					((GameObject) aux2.getData()).sumPos();
+//					((GameObject) aux3.getData()).resPos();
+//					aux.setNext(aux2.getNext());
+//					aux.getNext().setNext(aux2);
+//					aux2.setNext(aux3);
+//
+//					aux = aux.getNext();
+//					cont++;
+//					System.out.println("poppppppppp");
+//
+//				}
+			
+				
+				System.out.println("mmmmmmmmmmmmm");
+				aux = aux.getNext();
+			}
+
+		}
 	
 
 }

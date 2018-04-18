@@ -85,7 +85,44 @@ public class BasicEnemyBoss extends GameObject{
 	}
 
 	@Override
-	public void changeEnemy() {
+	public void changeEnemy(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sumPos() {
+		
+		if (getVelX() > 0) {
+			x = x+65;
+		}else {
+			x = x - 65;
+		}
+		
+		
+	}
+
+	@Override
+	public void resPos() {
+		
+		if (getVelX() > 0) {
+			x = x-65;
+		}else {
+			x = x + 65;
+		}
+		
+	}
+
+
+
+	@Override
+	public void chanceX(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeY(int value) {
 		// TODO Auto-generated method stub
 		
 	}
