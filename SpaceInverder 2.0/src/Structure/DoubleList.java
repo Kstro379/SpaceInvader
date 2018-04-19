@@ -11,7 +11,8 @@ public class DoubleList<T> {
 	private DoubleNode<T> start;
 	private DoubleNode<T> last;
 	private int lenght;
-	private int value;
+	private int value = 0;
+	private int cont = 0;
 	
 	Random r = new Random();
 	
@@ -55,25 +56,44 @@ public class DoubleList<T> {
 		
 	}
 	
-	public void change() {
-		DoubleNode<T> aux =  new DoubleNode<T>();
-		aux = start;
-		while(aux != null) {
-			if (((GameObject) aux.getData()).getId() == ID.BasicEnemyBoss) {
-				aux = aux.getNext();
-			}
-			aux = aux.getNext();
-		}
+	
 		
-	}
 	
 	public void deleteNode() {
 		DoubleNode<T> aux =  new DoubleNode<T>();
 		DoubleNode<T> aux2 =  new DoubleNode<T>();
+		DoubleNode<T> aux4 = new DoubleNode<T>();
 		
 		aux = start;
 		aux2 = null;
+		aux4 = start;
 		
+		while (value != 1) {
+
+			if (((GameObject) aux4.getData()).getId() == ID.BasicEnemyBoss) {
+				
+				((GameObject) aux4.getData()).changeEnemy(1);
+				
+				if (aux4.getNext() != null) {
+					aux4 = aux4.getNext();
+					((GameObject) aux4.getData()).changeEnemy(1);
+					value = 1;
+					
+				}else if (aux.getBack() != null) {
+					aux4 = aux4.getBack();
+					((GameObject) aux4.getData()).changeEnemy(1);
+					value = 1;
+				}
+				
+			
+			}else {
+				aux4 = aux4.getNext();
+			}
+			
+			
+		}
+		
+
 		while (aux != null) {
 			
 			if (((GameObject) aux.getData()).getLife() < 1) {
@@ -127,10 +147,13 @@ public class DoubleList<T> {
 			aux = aux.getNext();
 			
 		}
+		
+	
+	}
 			
 		
-		
-	}
+	
+	
 	
 	public T getData(int position) {
 
