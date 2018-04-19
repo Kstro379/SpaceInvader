@@ -41,27 +41,13 @@ public class BasicEnemy extends GameObject{
 	
 	public void changeEnemy(int value) {
 		
-		if (value == 1) {
+		
 			
 			enemy_image = ss2.grabImage(1, 1, 50, 41);
 			id = ID.BasicEnemyBoss;
-			
-			
-			while (cont < 1) {
-				cont = r.nextInt(8);
-			}
-			
-			life = cont;
-			
-		}else {
-			
-			enemy_image = ss2.grabImage(1, 1, 50, 41);
-			id = ID.BasicEnemyBoss;
-			
-		}
-		
-		
-		
+			life = 5;
+
+	
 		
 	}
 

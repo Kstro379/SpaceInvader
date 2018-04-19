@@ -5,10 +5,17 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+/**
+ * Esta es la clase donde se necunetran tosos los comando que llegará a necesitar el jugador para 
+ * su funciomalidad
+ * @author OlmanFrancisco
+ *
+ */
 
 public class Player extends GameObject {
 	
 	Handler handler;
+	
 	
 	
 	private BufferedImage player_image;
@@ -24,13 +31,17 @@ public class Player extends GameObject {
 		
 			
 	}
-
+	/**
+	 * Crea un retangulo para las colisiones
+	 */
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 50, 33);
 	}
 	
 
-	
+	/**
+	 * Actuliza posición imagenes y colisión
+	 */
 
 	public void tick() {
 		
@@ -47,6 +58,10 @@ public class Player extends GameObject {
 		
 	}
 	
+	/**
+	 * Se encarga de verificar si hay alguna cilisión existente
+	 * @throws Exception
+	 */
 	public void collision() throws Exception {
 		for (int i = 0; i < handler.basic.getLenght(); i++) {
 			
@@ -66,7 +81,10 @@ public class Player extends GameObject {
 		
 	}
 
-	
+	/*
+	 * Dibuja imagen
+	 * @see Game.GameObject#render(java.awt.Graphics)
+	 */
 	public void render(Graphics g) {
 		
 	

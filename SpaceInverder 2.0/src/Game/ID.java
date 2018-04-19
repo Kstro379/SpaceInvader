@@ -1,5 +1,8 @@
 package Game;
 
+/*
+ * Guarda las identificaciones de cada objecto de juego
+ */
 public enum ID {
 	
 	Player(),

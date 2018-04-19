@@ -5,6 +5,12 @@ import java.awt.event.KeyEvent;
 
 import Game.Game.STATE;
 
+
+ /**
+  * Realiza las detecciones del teclado ejecutar opereciones definidas
+  * @author OlmanFrancisco
+  *
+  */
 public class KeyInput extends KeyAdapter {
 	
 	private Handler handler;
@@ -13,6 +19,9 @@ public class KeyInput extends KeyAdapter {
 	
 	Game game;
 	
+	/*
+	 * Guarda las constantes de las teclas
+	 */
 	public KeyInput(Handler handler, Game game) {
 		this.handler = handler;
 		this.game = game;
@@ -23,6 +32,10 @@ public class KeyInput extends KeyAdapter {
 		
 	}
 	
+	/*
+	 * Detecta si una tecla fue presionada y si es alguna de las definidas con comandos(non-Javadoc)
+	 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		
@@ -69,6 +82,10 @@ public class KeyInput extends KeyAdapter {
 		
 	}
 	
+	/*
+	 * Detecta cunado una tecla de jo de ser presionada(non-Javadoc)
+	 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+	 */
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		

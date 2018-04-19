@@ -3,6 +3,9 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/*
+ * Encargada de actualizar los datos relevantes al jugar
+ */
 public class HUD {
 	
 	public static int HEALTH = 100;
@@ -11,6 +14,9 @@ public class HUD {
 	private int score = 0;
 	private int level = 1;
 	
+	/*
+	 * Crea y actualiza la barra de vida
+	 */
 	public void tick() {
 		
 		HEALTH = Game.clamp(HEALTH, 0, 100);
@@ -21,6 +27,9 @@ public class HUD {
 		
 	}
 	
+	/*
+	 * Dibuja en pantalla, la vida score y nivel
+	 */
 	public void render(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(15, 15, 200, 32);
@@ -33,7 +42,7 @@ public class HUD {
 		g.drawString("Level: " + level, 10, 84);
 		
 	}
-
+	
 	public int getScore() {
 		return score;
 	}

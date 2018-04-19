@@ -5,6 +5,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+/**
+ * Se encargar de dibujar las particulas del menú
+ * @author OlmanFrancisco
+ *
+ */
+
 public class MenuParticle extends GameObject{
 	
 	public Handler handler;
@@ -31,12 +37,17 @@ public class MenuParticle extends GameObject{
 		
 		
 	}
+	/**
+	 * Dibuja retangulo para colisiones
+	 */
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 16, 16);
 	}
 
-	
+	/**
+	 * Acualiza posiciones y comprieba que no se salga de la pantalla
+	 */
 	public void tick() {
 		x += velX;
 		y += velY;

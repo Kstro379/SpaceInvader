@@ -9,6 +9,12 @@ import java.awt.event.MouseEvent;
 //import Conection.ServerAndroid;
 import Game.Game.STATE;
 
+/**
+ * Encargado de desplagar todos los menus del juego, sus botones y caracteristicas, así como animaciones y sonidos
+ * @author OlmanFrancisco
+ *
+ */
+
 public class Menu extends MouseAdapter {
 	
 	private Handler handler;
@@ -22,6 +28,9 @@ public class Menu extends MouseAdapter {
 		
 	}
 	
+	/**
+	 * Detecta los eventos del mouse y se se encuentar en la posión de alfgin botón al hacer click
+	 */
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
@@ -53,6 +62,9 @@ public class Menu extends MouseAdapter {
 				AudioPlayer.getSound("button_sound").play();
 				return;
 			}
+			/**
+			 * Si el menú es el del final ejecuta las funciones de crear botones y las particulas 
+			 */
 		}else if (Game.gameState == STATE.End) {
 			
 			if (mouseOver(mx, my, 210, 350, 200, 64)) {
@@ -65,6 +77,9 @@ public class Menu extends MouseAdapter {
 				
 		
 			}
+			/**
+			 * Si el menú es el del select ejecuta las funciones de crear botones y las particulas 
+			 */
 
 		}else if (Game.gameState == STATE.Select) {
 			//Boton de inicio
@@ -75,6 +90,9 @@ public class Menu extends MouseAdapter {
 				AudioPlayer.getSound("button_sound").play();
 				//new ServerAndroid();
 			
+				/**
+				 * Si el menú es el inicial ejecuta las funciones de crear botones y las particulas 
+				 */
 			}else if (mouseOver(mx, my, 210, 150, 200, 64)) {
 					Game.gameState = STATE.Game;
 					handler.clearEnemys();
@@ -83,6 +101,10 @@ public class Menu extends MouseAdapter {
 			}
 		}
 	}
+	/*
+	 * Calcula las posiciones del mouse(non-Javadoc)
+	 * @see java.awt.event.MouseAdapter#mouseReleased(java.awt.event.MouseEvent)
+	 */
 
 	public void mouseReleased(MouseEvent e) {
 		
@@ -101,6 +123,9 @@ public class Menu extends MouseAdapter {
 		
 	}
 	
+	/*
+	 * Dibuja los componetes según el menú que se este utilizndo
+	 */
 	public void render(Graphics g) {
 		
 		if (Game.gameState == STATE.Menu){

@@ -2,6 +2,12 @@ package Game;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Esta Clase se encarga de cargar las imagnes por medio de un BufferedImage
+ * @author OlmanFrancisco
+ *
+ */
+
 public class SpriteSheet {
 	
 	private BufferedImage sprite;

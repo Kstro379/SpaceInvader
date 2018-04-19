@@ -8,6 +8,9 @@ import Structure.CircularSimpleList;
 import Structure.DoubleList;
 import Structure.SimpleList;
 
+/*
+ * Ciclo principal que se encarga de las funciones de actualización del juego 
+ */
 public class Handler {
 
 	SimpleList<GameObject> player = new SimpleList<GameObject>();
@@ -21,7 +24,9 @@ public class Handler {
 	private int cont;
 
 	Game game;
-
+	/*
+	 * Actualiza cada una de las listas creadas para saber si se eliminaron enemigos o se movieron
+	 */
 	public void tick() {
 		
 		if (basic != null) {
@@ -56,6 +61,7 @@ public class Handler {
 				}
 
 			}
+			claseB.deleteNode();
 			
 
 		}
@@ -70,6 +76,9 @@ public class Handler {
 					
 				}
 			}
+			/*
+			 *Mueve al enemigo de posición
+			 */
 			claseC.compare();
 		}
 
@@ -84,6 +93,9 @@ public class Handler {
 
 				}
 			}
+			/*
+			 * Mueve a los enemigos de posición
+			 */
 			claseD.compare();
 			
 			
@@ -100,6 +112,9 @@ public class Handler {
 
 				}
 			}
+			/*
+			 * Mueve a los enemigos de posición
+			 */
 			claseE.compare();
 			
 			
@@ -118,11 +133,16 @@ public class Handler {
 				}
 
 			}
+			/*
+			 * Elimina las balas del jugador
+			 */
 			player.deleteBullet();
 
 		}
 	}
-
+	/*
+	 * Se encarga de dibujar todos los obejetos en pantalla según cada una de las listas creadas
+	 */
 	public void render(Graphics g) {
 
 		if (player.getLenght() > 0) {
@@ -226,10 +246,19 @@ public class Handler {
 				
 
 			}
-		}claseB.deleteNode();
+			
+		}
+		/*
+		 * Cambia enemigos de posición y elinina nodos sobrantes
+		 */
+		
+		
+		
 		
 	}
-
+	/*
+	 * Elimina la onformación de todas las listas
+	 */
 	public void clearEnemys() {
 
 		basic.delete();
@@ -246,34 +275,51 @@ public class Handler {
 			// addSimpleList(new Player(Game.WIDTH/2-32, Game.HEIGHT/-100, ID.Player,this));
 		}
 	}
-
+	/*
+	 * Retorna al jugador 
+	 */
 	public int getPlayerX() {
 		return this.player.getX();
 	}
-
+	/*
+	 * Añade a la lista
+	 */
 	public void addplayerList(GameObject object) {
 		this.player.setAtFinal(object);
 	}
-
+	/*
+	 * Añade a la lista
+	 */
 	public void addbasicList(GameObject object) {
 		this.basic.setAtFinal(object);
 	}
-
+	/*
+	 * Añade a la lista
+	 */
 	public void addDoubleList(GameObject object) {
 		this.claseB.setAtFinal(object);
 	}
+	/*
+	 * Añade a la lista
+	 */
 	public void addClaseAList(GameObject object) {
 		this.claseA.setAtFinal(object);
 	}
-	
+	/*
+	 * Añade a la lista
+	 */
 	public void addClaseCList(GameObject object) {
 		this.claseC.addAtFinal(object);
 	}
-	
+	/*
+	 * Añade a la lista
+	 */
 	public void addClaseDList(GameObject object) {
 		this.claseD.addAtFinal(object);
 	}
-	
+	/*
+	 * Añade a la lista
+	 */
 	public void addClaseEList(GameObject object) {
 		this.claseE.addAtFinal(object);
 	}

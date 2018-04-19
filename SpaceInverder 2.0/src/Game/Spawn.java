@@ -2,7 +2,11 @@ package Game;
 
 import java.util.Random;
 
-
+/**
+ * La clase spawn es la encargada de crear los enemigos por nivel, cargandolos en la listas predefinidas
+ * @author OlmanFrancisco
+ *
+ */
 
 public class Spawn {
 	
@@ -26,6 +30,11 @@ public class Spawn {
 		positionY = 200;
 	
 	}
+	
+	/**
+	 * Este metodo es el encargado de actualizar los enemigos según el nivel en que se encuentran
+	 * cargando en listas los eneimgos correspondientes
+	 */
 	
 	public void tick() {
 		scoreKeep++;

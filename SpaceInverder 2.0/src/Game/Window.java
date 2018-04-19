@@ -5,6 +5,12 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+ /**
+  * 
+  * @author OlmanFrancisco
+  * Esta clase es encargada de crear la ventana donde sera ejecutado el juego. Todos sus comandos predeterminados
+  * por el sistema de JFrame
+  */
 public class Window extends Canvas {
 
 	private static final long serialVersionUID = 573860602378245302L;
