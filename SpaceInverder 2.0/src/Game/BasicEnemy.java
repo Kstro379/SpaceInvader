@@ -4,7 +4,7 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+
 
 import Game.GameObject;
 import Game.Handler;
@@ -18,8 +18,7 @@ public class BasicEnemy extends GameObject{
 	private BufferedImage enemy_image;
 	private SpriteSheet ss = new SpriteSheet(Game.sprite_enemy);
 	private SpriteSheet ss2 = new SpriteSheet(Game.sprite_sheet);
-	private Random r = new Random();
-	private int cont = 0;
+	
 	
 	
 	
@@ -42,10 +41,16 @@ public class BasicEnemy extends GameObject{
 	public void changeEnemy(int value) {
 		
 		
+			if (id == ID.BasicEnemyBoss) {
+				enemy_image = ss.grabImage(1, 1, 50, 41);
+				id = ID.BasicEnemy;
+				life = 1;
+			}else {
+				enemy_image = ss2.grabImage(1, 1, 50, 41);
+				id = ID.BasicEnemyBoss;
+				life = 5;
+			}
 			
-			enemy_image = ss2.grabImage(1, 1, 50, 41);
-			id = ID.BasicEnemyBoss;
-			life = 5;
 
 	
 		

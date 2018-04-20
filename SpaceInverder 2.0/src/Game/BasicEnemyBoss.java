@@ -4,7 +4,7 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+
 
 	/*
 	 * Clase encargada de crear al jefe de cada lista
@@ -42,10 +42,17 @@ public class BasicEnemyBoss extends GameObject{
 	@Override
 	public void changeEnemy(int value) {
 			
+			if (id == ID.BasicEnemy) {
+				id = ID.BasicEnemyBoss;
+				life = 5;
+				enemy_image = ss.grabImage(1, 1, 50, 41);
+			}
+			else {
+				id = ID.BasicEnemy;
+				life = 1;
+				enemy_image = ss2.grabImage(1, 1, 50, 41);
+			}
 			
-			id = ID.BasicEnemy;
-			life = 1;
-			enemy_image = ss2.grabImage(1, 1, 50, 41);
 			
 					
 		

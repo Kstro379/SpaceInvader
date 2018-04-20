@@ -13,7 +13,7 @@ import Structure.SimpleList;
  */
 public class Handler {
 
-	SimpleList<GameObject> player = new SimpleList<GameObject>();
+	public SimpleList<GameObject> player = new SimpleList<GameObject>();
 	SimpleList<GameObject> basic = new SimpleList<GameObject>();
 	SimpleList<GameObject> claseA = new SimpleList<GameObject>();
 	CircularSimpleList<GameObject> claseC = new CircularSimpleList<GameObject>();
@@ -28,6 +28,8 @@ public class Handler {
 	 * Actualiza cada una de las listas creadas para saber si se eliminaron enemigos o se movieron
 	 */
 	public void tick() {
+		
+		
 		
 		if (basic != null) {
 			for (int i = 0; i < basic.getLenght(); i++) {
@@ -322,5 +324,8 @@ public class Handler {
 	 */
 	public void addClaseEList(GameObject object) {
 		this.claseE.addAtFinal(object);
+	}
+	public void addBullet() {
+		this.player.setAtFinal(new Bullet(player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, this));
 	}
 }

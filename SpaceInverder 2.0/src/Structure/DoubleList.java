@@ -11,8 +11,9 @@ public class DoubleList<T> {
 	private DoubleNode<T> start;
 	private DoubleNode<T> last;
 	private int lenght;
-	private int value = 0;
+	private int value = 1;
 	private int cont = 0;
+	private int check = 0;
 	
 	Random r = new Random();
 	
@@ -66,24 +67,44 @@ public class DoubleList<T> {
 		
 		aux = start;
 		aux2 = null;
-		aux4 = start;
 		
-		while (value != 1) {
+		cont++;
+		
+		if (cont >= 30) {
+			cont = 0;
+			value = 0;
+		}
+		
+		aux4 = start;
+		while (value != 1 && aux4 != null) {
 
 			if (((GameObject) aux4.getData()).getId() == ID.BasicEnemyBoss) {
 				
 				((GameObject) aux4.getData()).changeEnemy(1);
 				
-				if (aux4.getNext() != null) {
+				if (aux4.getNext() != null && check == 0) {
+					
 					aux4 = aux4.getNext();
 					((GameObject) aux4.getData()).changeEnemy(1);
 					value = 1;
 					
-				}else if (aux.getBack() != null) {
+					
+					
+				}else if (aux4.getBack() != null) {
+					
 					aux4 = aux4.getBack();
 					((GameObject) aux4.getData()).changeEnemy(1);
 					value = 1;
+					
+					if (check == 0) {
+						check = 1;
+					}
+					if (aux4 == start) {
+						check = 0;
+					}
+					
 				}
+				
 				
 			
 			}else {

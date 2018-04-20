@@ -7,7 +7,10 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-//import Conection.ServerAndroid;
+import Conection.ServerAndroid;
+
+
+
 
 public class Game extends Canvas implements Runnable {
 	
@@ -24,6 +27,8 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 	private Spawn spawner;
 	private Menu menu;
+	private ServerAndroid serverAndroid;
+	
 	
 
 	
@@ -56,8 +61,9 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler, this));
 		this.addMouseListener(menu);
 		
+		
 		AudioPlayer.load();
-		//AudioPlayer.getMusic("music").loop();
+		AudioPlayer.getMusic("music").loop();
 		
 		
 		new Window(WIDTH, HEIGHT, "SpaceInvander", this);
@@ -65,11 +71,15 @@ public class Game extends Canvas implements Runnable {
 		spawner = new Spawn(handler, hud);
 		r = new Random();
 		
+		
+		
 		if (gameState != STATE.Game) {
 			for (int i = 0; i < 10; i++) {
 				handler.addplayerList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), 1, ID.MenuParticle, handler));
 			}
 		}
+		
+		serverAndroid = new ServerAndroid(this, handler);
 
 	}
 	
@@ -122,12 +132,20 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		
+	
+		
 		if (gameState == STATE.Game) {
 			
 			if  (!paused){
 				hud.tick();
 				spawner.tick();
 				handler.tick();
+				
+				
+				
+				
+				
+				
 				
 				if (HUD.HEALTH <= 0) {
 					HUD.HEALTH = 100;
@@ -137,6 +155,8 @@ public class Game extends Canvas implements Runnable {
 						handler.addplayerList(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), 1, ID.MenuParticle, handler));
 					}
 				}
+				
+				
 			}
 				
 		}else if (gameState == STATE.Menu || gameState == STATE.End || gameState == STATE.Select || gameState == STATE.Help){

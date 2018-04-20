@@ -6,7 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-//import Conection.ServerAndroid;
+
+import Conection.ServerAndroid;
 import Game.Game.STATE;
 
 /**
@@ -19,6 +20,7 @@ public class Menu extends MouseAdapter {
 	
 	private Handler handler;
 	private HUD hud;
+	
 	
 	
 	
@@ -88,7 +90,8 @@ public class Menu extends MouseAdapter {
 				handler.clearEnemys();
 				handler.addplayerList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 				AudioPlayer.getSound("button_sound").play();
-				//new ServerAndroid();
+				
+				
 			
 				/**
 				 * Si el menú es el inicial ejecuta las funciones de crear botones y las particulas 
@@ -98,6 +101,7 @@ public class Menu extends MouseAdapter {
 					handler.clearEnemys();
 					handler.addplayerList(new Player((Game.WIDTH / 2) - 32, Game.HEIGHT - 100, 1, ID.Player, handler));
 					AudioPlayer.getSound("button_sound").play();
+					
 			}
 		}
 	}

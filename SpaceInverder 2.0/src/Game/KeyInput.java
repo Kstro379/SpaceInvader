@@ -16,7 +16,6 @@ public class KeyInput extends KeyAdapter {
 	private Handler handler;
 	private boolean[] keyDown = new boolean[3];
 	Player player;
-	
 	Game game;
 	
 	/*
