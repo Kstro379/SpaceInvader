@@ -1,5 +1,6 @@
 package Conection;
 
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +9,7 @@ import java.net.Socket;
 
 import Game.Bullet;
 import Game.Game;
+import Game.GameObject;
 import Game.Handler;
 import Game.ID;
 import Game.Player;
@@ -51,19 +53,36 @@ public class ServerAndroid {
 				System.out.println(message);
 				
 				if (var.equals("h") ) {
-					System.out.println("aaaaaaaaaaaaaaaa");
+					
 				handler.addplayerList(new Bullet(handler.player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, handler));
 				
 				}
 				
+				for (int i = 0; i < handler.player.getLenght(); i++) {
+					GameObject tempObject;
+					
+						tempObject = handler.player.getData(i);
+						if (tempObject.getId() == ID.Player) {
+							
+							if (var.equals("r")) {
+								System.out.println("aaaaaaaaaaaaaaaa");
+								((GameObject) handler.player.getData(i)).setVelX(-5);
+							}
+							if (var.equals("l")) {
+								System.out.println("aaaaaaaaaaaaaaaa");
+								((GameObject) handler.player.getData(i)).setVelX(5);
+							}
+						}
+						
+					}			
 				ss.close();
 				s.close();
 				isr.close();
 				br.close();
 				
 
-			
 				}
+				
 			
 			
 		} catch (IOException e) {
