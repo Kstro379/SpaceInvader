@@ -13,7 +13,10 @@ public class HUD {
 	
 	private int score = 0;
 	private int level = 1;
+	private String current = " ";
+	private String following = " ";
 	
+
 	/*
 	 * Crea y actualiza la barra de vida
 	 */
@@ -38,8 +41,10 @@ public class HUD {
 		g.setColor(Color.white);
 		g.drawRect(15, 15, 200, 32);
 		
-		g.drawString("Score: " + score, 10, 64);
-		g.drawString("Level: " + level, 10, 84);
+		g.drawString("Score: " + score, 525, 35);
+		g.drawString("Level: " + level, 430, 35);
+		g.drawString("Current: " + current, 230, 35);
+		g.drawString("Following: " + following, 320, 35);
 		
 	}
 	
@@ -58,6 +63,23 @@ public class HUD {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+	
+	public String getCurrent() {
+		return current;
+	}
+
+	public void setCurrent(String current) {
+		this.current = current;
+	}
+
+	public String getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(String following) {
+		this.following = following;
+	}
+
 	
 	
 

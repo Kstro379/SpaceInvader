@@ -80,19 +80,30 @@ public class Spawn {
 //				handler.addClaseEList(e4);
 //				cont++;
 				
-				// for (int i = 1; i <= 5; i++) {
-				//
-				// positionX += 15;
-				// handler.addbasicList(new BasicEnemy(positionX, positionY, 1, ID.BasicEnemy,
-				// handler));
-				// positionX += 50;
-				// cont++;
-
+				 for (int i = 1; i <= 8; i++) {
 				
+				 positionX += 15;
+				 handler.addbasicList(new BasicEnemy(positionX, positionY, 1, ID.BasicEnemy,
+				 handler));
+				 positionX += 50;
+				 cont++;
+				 hud.setCurrent("Basic");
+				 hud.setFollowing("B");
+
+				 }
 				
 				
 			}else if (hud.getLevel() == 3 && cont == 0) {
 				
+				for (int i = 1; i <= 8; i++) {
+					
+					 positionX += 15;
+					 handler.addbasicList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy,
+					 handler));
+					 positionX += 50;
+					 cont++;
+
+					 }
 //				positionX = 100;a
 //				
 //				for (int i = 1; i < 5; i++) {
@@ -194,8 +205,16 @@ public class Spawn {
 				
 			
 
-			}else if (hud.getLevel() == 4 && cont == 0) {
-				
+			}else if (hud.getLevel() == 5 && cont == 0) {
+				for (int i = 1; i <= 8; i++) {
+					
+					 positionX += 15;
+					 handler.addbasicList(new BasicEnemy(positionX, 20, 1, ID.BasicEnemy,
+					 handler));
+					 positionX += 50;
+					 cont++;
+
+					 }
 //				positionX = 100;
 //				
 //				for (int i = 1; i < 5; i++) {

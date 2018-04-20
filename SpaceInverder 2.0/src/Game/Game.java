@@ -45,14 +45,18 @@ public class Game extends Canvas implements Runnable {
 	
 	public static BufferedImage sprite_sheet;
 	public static BufferedImage sprite_enemy;
-
+	public static BufferedImage sprite_backgroup;
+	
 	
 	public Game() {
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		
 		sprite_sheet = loader.loadImage("/frame.png");
-		sprite_enemy = loader.loadImage("/enemyRed3.png");
+		sprite_enemy = loader.loadImage("/BasicEnemy.png");
+		
+		
+		
 		
 		
 		handler = new Handler();
@@ -181,6 +185,7 @@ public class Game extends Canvas implements Runnable {
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
 		
 		
 		handler.render(g);

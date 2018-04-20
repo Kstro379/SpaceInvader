@@ -65,11 +65,9 @@ public class ServerAndroid {
 						if (tempObject.getId() == ID.Player) {
 							
 							if (var.equals("r")) {
-								System.out.println("aaaaaaaaaaaaaaaa");
 								((GameObject) handler.player.getData(i)).setVelX(-5);
 							}
 							if (var.equals("l")) {
-								System.out.println("aaaaaaaaaaaaaaaa");
 								((GameObject) handler.player.getData(i)).setVelX(5);
 							}
 						}
