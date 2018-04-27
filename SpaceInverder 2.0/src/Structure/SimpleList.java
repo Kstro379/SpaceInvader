@@ -1,6 +1,7 @@
 package Structure;
 
 import Game.GameObject;
+import Game.HUD;
 import Game.ID;
 
 public class SimpleList<T> {
@@ -8,8 +9,10 @@ public class SimpleList<T> {
 	private SimpleNode<T> start;
 	private int lenght;
 	private int posY;
-
-	public SimpleList() {
+	private HUD hud;
+	
+	public SimpleList(HUD hud) {
+		this.hud = hud;
 		start = null;
 		lenght = 0;
 
@@ -102,13 +105,19 @@ public class SimpleList<T> {
 	}
 
 	public void compare() {
+		
+		
 
 		GameObject temp = (GameObject) start.getData();
 		if (temp.getLife() < 1) {
 			start = start.getNext();
 			lenght--;
+			hud.setRealScore(hud.getRealScore() + 10);
 
-		} else {
+		} if (lenght == 1) {
+			hud.setRealScore(hud.getRealScore() + 30);
+			delete();
+		}else {
 
 			SimpleNode<T> aux = start;
 			SimpleNode<T> aux2 = null;
@@ -123,7 +132,10 @@ public class SimpleList<T> {
 					aux.setNext(aux2);
 					check++;
 					lenght--;
+					hud.setRealScore(hud.getRealScore() + 10);
+					
 					if (temp.getId() == ID.BasicEnemyBoss) {
+						hud.setRealScore(hud.getRealScore() + 30);
 						delete();
 					}
 

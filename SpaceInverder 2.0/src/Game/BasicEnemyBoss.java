@@ -21,7 +21,7 @@ public class BasicEnemyBoss extends GameObject{
 		super(x, y, life, id);
 		this.handler = handler;
 		
-		velX = 3;
+		velX = 4;
 		
 		
 		enemy_image = ss.grabImage(1, 1, 50, 41);
@@ -164,5 +164,12 @@ public class BasicEnemyBoss extends GameObject{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getLife() {
+		return life;
+	}
+	
+	
+	
 
 }

@@ -13,6 +13,7 @@ public class HUD {
 	
 	private int score = 0;
 	private int level = 1;
+	private int realScore = 0;
 	private String current = " ";
 	private String following = " ";
 	
@@ -41,7 +42,7 @@ public class HUD {
 		g.setColor(Color.white);
 		g.drawRect(15, 15, 200, 32);
 		
-		g.drawString("Score: " + score, 525, 35);
+		g.drawString("Score: " + realScore, 525, 35);
 		g.drawString("Level: " + level, 430, 35);
 		g.drawString("Current: " + current, 230, 35);
 		g.drawString("Following: " + following, 320, 35);
@@ -79,6 +80,15 @@ public class HUD {
 	public void setFollowing(String following) {
 		this.following = following;
 	}
+	
+	public int getRealScore() {
+		return realScore;
+	}
+
+	public void setRealScore(int realScore) {
+		this.realScore = realScore;
+	}
+
 
 	
 	

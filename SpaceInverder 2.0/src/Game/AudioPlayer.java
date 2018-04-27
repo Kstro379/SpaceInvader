@@ -16,6 +16,7 @@ public class AudioPlayer {
 		
 		try {
 			soundMap.put("button_sound", new Sound("res/button.ogg"));
+			soundMap.put("start_sound", new Sound("res/prepare_yourself.ogg"));
 			
 			musicMap.put("music", new Music("res/background.ogg"));
 		}catch (SlickException e) {

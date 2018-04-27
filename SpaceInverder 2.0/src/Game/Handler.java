@@ -12,18 +12,28 @@ import Structure.SimpleList;
  * Ciclo principal que se encarga de las funciones de actualización del juego 
  */
 public class Handler {
-
-	public SimpleList<GameObject> player = new SimpleList<GameObject>();
-	SimpleList<GameObject> basic = new SimpleList<GameObject>();
-	SimpleList<GameObject> claseA = new SimpleList<GameObject>();
+	
+	HUD hud;
+	Game game;
+	public SimpleList<GameObject> player;
+	SimpleList<GameObject> basic;
+	SimpleList<GameObject> claseA;
 	CircularSimpleList<GameObject> claseC = new CircularSimpleList<GameObject>();
 	CircularDinamicList<GameObject> claseD = new CircularDinamicList<GameObject>(); 
 	DoubleList<GameObject> claseB = new DoubleList<GameObject>();
 	CircularDoubleList<GameObject> claseE = new CircularDoubleList<GameObject>();
-
 	private int cont;
-
-	Game game;
+	
+	
+	
+	public Handler(HUD hud) {
+		this.hud = hud;
+		
+		player = new SimpleList<GameObject>(hud);
+		basic = new SimpleList<GameObject>(hud);
+		claseA = new SimpleList<GameObject>(hud);
+		
+	}
 	/*
 	 * Actualiza cada una de las listas creadas para saber si se eliminaron enemigos o se movieron
 	 */
@@ -190,6 +200,7 @@ public class Handler {
 			}
 			
 		}
+		
 
 		if (basic.getLenght() > 0) {
 			for (int i = 0; i < basic.getLenght(); ++i) {

@@ -173,4 +173,6 @@ public class FastEnemy extends GameObject{
 		
 	}
 
+
+
 }

@@ -147,7 +147,7 @@ public class DoubleList<T> {
 						while (aux3 != null) {
 							((GameObject) aux3.getData()).resPos();
 							aux3 = aux3.getNext();
-							System.out.println("eeeeeeeeeeeeee");
+							
 						}
 						
 						
@@ -158,7 +158,7 @@ public class DoubleList<T> {
 						while (aux3 != null) {
 							((GameObject) aux3.getData()).res();;
 							aux3 = aux3.getNext();
-							System.out.println("oooooooooooooo");
+							
 						}
 						
 					}

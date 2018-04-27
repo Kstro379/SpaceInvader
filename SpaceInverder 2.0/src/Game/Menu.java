@@ -41,6 +41,9 @@ public class Menu extends MouseAdapter {
 			// Boton de inicio
 			if (mouseOver(mx, my, 210, 150, 200, 64)) {
 				Game.gameState = STATE.Select;
+				System.out.println("aaaaaaaaaaaaaaa");
+				AudioPlayer.getSound("button_sound").play();
+				AudioPlayer.getSound("start_sound").play();
 			}
 
 			// Boton de ayuda

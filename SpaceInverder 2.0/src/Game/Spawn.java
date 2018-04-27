@@ -26,7 +26,7 @@ public class Spawn {
 	public Spawn(Handler handler, HUD hud) {
 		this.handler  = handler;
 		this.hud = hud;
-		positionX = 100;
+		positionX = 10;
 		positionY = 200;
 	
 	}
@@ -45,7 +45,7 @@ public class Spawn {
 		// despues solo avanza con score 
 		//luego los enmigos tiene la direccion
 		
-		if (scoreKeep >= 100) {
+		if (scoreKeep >= 13000) {
 			scoreKeep = 0;
 			cont = 0;
 			check = 0;
@@ -54,7 +54,7 @@ public class Spawn {
 			
 			
 		
-			}else if (hud.getLevel() == 2 && cont == 0 ) {
+			}else if (hud.getLevel() == 1 ) {
 				
 				
 
@@ -79,31 +79,158 @@ public class Spawn {
 //				handler.addClaseEList(e3);
 //				handler.addClaseEList(e4);
 //				cont++;
+				//Lista 1
 				
-				 for (int i = 1; i <= 8; i++) {
-				
-				 positionX += 15;
-				 handler.addbasicList(new BasicEnemy(positionX, positionY, 1, ID.BasicEnemy,
-				 handler));
-				 positionX += 50;
-				 cont++;
-				 hud.setCurrent("Basic");
-				 hud.setFollowing("B");
+			
+			if (scoreKeep == 50) {
 
-				 }
-				
-				
-			}else if (hud.getLevel() == 3 && cont == 0) {
-				
-				for (int i = 1; i <= 8; i++) {
-					
-					 positionX += 15;
-					 handler.addbasicList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy,
-					 handler));
-					 positionX += 50;
-					 cont++;
+				positionX = 100;
 
-					 }
+				for (int i = 1; i <= 5; i++) {
+
+					value = r.nextInt(3);
+
+					if (value == 2 && check == 0) {
+
+						value = 0;
+
+						while (value < 1) {
+							value = r.nextInt(6);
+						}
+
+						positionX += 15;
+						handler.addClaseDList(new BasicEnemyBoss(positionX, 40, value, ID.BasicEnemyBoss, handler));
+						positionX += 50;
+						check++;
+
+					} else {
+
+						value = 0;
+						while (value < 1) {
+							value = r.nextInt(6);
+						}
+						positionX += 15;
+						handler.addClaseDList(new BasicEnemy(positionX, 40, value, ID.BasicEnemy, handler));
+						positionX += 50;
+
+					}
+
+				}
+				handler.claseD.bubleSort();
+			}
+			
+			
+				
+//*******			
+//			if (scoreKeep == 50 || scoreKeep == 650 || scoreKeep == 950) {
+//				positionX = 50;
+//				for (int i = 1; i <= 5; i++) {
+//
+//					positionX += 15;
+//					handler.addbasicList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy, handler));
+//					positionX += 50;
+//					cont++;
+//					
+//					if (scoreKeep >= 950) {
+//						hud.setCurrent("Basic");
+//						hud.setFollowing("Basic");
+//					}else {
+//						hud.setCurrent("Basic");
+//						hud.setFollowing("A");
+//					}
+//					
+//
+//				}
+//			}
+//
+//			if (scoreKeep == 200 || scoreKeep == 750) {
+//				positionX = 50;
+//				check = 0;
+//				hud.setCurrent("A");
+//				hud.setFollowing("Basic");
+//
+//				for (int i = 1; i < 5; i++) {
+//
+//					value = r.nextInt(3);
+//
+//					if (value == 2 && check == 0) {
+//
+//						value = 0;
+//						while (value < 1) {
+//							value = r.nextInt(6);
+//						}
+//
+//						positionX += 15;
+//						handler.addClaseAList(new BasicEnemyBoss(positionX, 50, value, ID.BasicEnemyBoss, handler));
+//						positionX += 50;
+//						check++;
+//
+//					} else {
+//
+//						positionX += 15;
+//						handler.addClaseAList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy, handler));
+//						positionX += 50;
+//
+//					}
+//
+//				}
+//				if (check == 0) {
+//
+//					value = 0;
+//					while (value < 1) {
+//						value = r.nextInt(6);
+//					}
+//					positionX += 15;
+//					handler.addClaseAList(new BasicEnemyBoss(positionX, 50, value, ID.BasicEnemyBoss, handler));
+//					positionX += 50;
+//
+//				} else {
+//					positionX += 15;
+//					handler.addClaseAList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy, handler));
+//					positionX += 50;
+//				}
+//				cont++;
+//
+//			}
+//
+//			if (scoreKeep == 400 || scoreKeep == 850 || scoreKeep == 1050) {
+//				positionX = 50;
+//				hud.setCurrent("Basic");
+//				 hud.setFollowing("Basic");
+//				for (int i = 1; i <= 8; i++) {
+//
+//					positionX += 15;
+//					handler.addbasicList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy, handler));
+//					positionX += 50;
+//					cont++;
+//					
+//					if (scoreKeep >= 1050) {
+//						hud.setCurrent("Basic");
+//						hud.setFollowing("END");
+//						
+//					}else {
+//						hud.setCurrent("Basic");
+//						hud.setFollowing("Basic");
+//					}
+//					
+//
+//				}
+//			}
+//			
+//			
+			
+			
+
+		} else if (hud.getLevel() == 3 && cont == 0) {
+
+			for (int i = 1; i <= 8; i++) {
+
+				positionX += 15;
+				handler.addbasicList(new BasicEnemy(positionX, 50, 1, ID.BasicEnemy, handler));
+				positionX += 50;
+				cont++;
+
+			}
 //				positionX = 100;a
 //				
 //				for (int i = 1; i < 5; i++) {

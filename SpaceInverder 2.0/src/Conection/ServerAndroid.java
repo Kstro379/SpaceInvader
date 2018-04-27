@@ -23,6 +23,7 @@ public class ServerAndroid {
 	private static BufferedReader br;
 	private static InputStreamReader isr;
 	private static String message = " ";
+	private int cont;
 	Handler handler;
 	Game game;
 	Player player;
@@ -53,8 +54,13 @@ public class ServerAndroid {
 				System.out.println(message);
 				
 				if (var.equals("h") ) {
-					
-				handler.addplayerList(new Bullet(handler.player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, handler));
+					if (cont == 1) {
+						handler.addplayerList(
+								new Bullet(handler.player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, handler));
+						cont = 0;
+					}else {
+						cont++;
+					}
 				
 				}
 				

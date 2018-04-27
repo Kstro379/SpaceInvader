@@ -59,15 +59,16 @@ public class Game extends Canvas implements Runnable {
 		
 		
 		
-		handler = new Handler();
+		
 		hud = new HUD();
+		handler = new Handler(hud);
 		menu = new Menu(this, handler, hud);
 		this.addKeyListener(new KeyInput(handler, this));
 		this.addMouseListener(menu);
 		
 		
 		AudioPlayer.load();
-		AudioPlayer.getMusic("music").loop();
+		//AudioPlayer.getMusic("music").loop();
 		
 		
 		new Window(WIDTH, HEIGHT, "SpaceInvander", this);

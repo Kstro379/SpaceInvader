@@ -15,6 +15,7 @@ public class KeyInput extends KeyAdapter {
 	
 	private Handler handler;
 	private boolean[] keyDown = new boolean[3];
+	private int cont = 1;
 	Player player;
 	Game game;
 	
@@ -55,8 +56,15 @@ public class KeyInput extends KeyAdapter {
 						keyDown[1] = true;
 					}
 					if (key == KeyEvent.VK_O) {
+						
+						if (cont == 1){
 						handler.addplayerList(new Bullet(handler.player.getX() + 25, Game.HEIGHT - 100, 1, ID.Bullet, handler));
 						keyDown[2] = true;
+						//cont = 0;
+						}
+						else {
+							//cont++;
+						}
 						
 					}
 				}

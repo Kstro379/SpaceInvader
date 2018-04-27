@@ -129,7 +129,7 @@ public class CircularDoubleList<T> {
 
 		while (cont <= lenght) {
 			
-			if (((GameObject) aux.getData()).getId() != ID.BasicEnemyBoss) {
+  			if (((GameObject) aux.getData()).getId() != ID.BasicEnemyBoss) {
 
 				if (((GameObject) aux.getData()).getX() == enemy.getX() && ((GameObject) aux.getData()).getVelX() <= 0) {
 					((GameObject) aux.getData()).changeY(2);
